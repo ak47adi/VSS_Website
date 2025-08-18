@@ -1,54 +1,53 @@
-import { useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
 import PlatformPage from './components/PlatformPage';
 import CandidatesPage from './components/CandidatesPage';
+import AssurancePage from './components/AssurancePage';
+import ContactPage from './components/ContactPage';
 import NewsPage from './components/NewsPage';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
-function App() {
-  const [language, setLanguage] = useState<'en' | 'hi'>('en');
-  const [currentPage, setCurrentPage] = useState('home');
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <HomePage language={language} setCurrentPage={setCurrentPage} />;
-      case 'about':
-        return <AboutPage language={language} />;
-      case 'platform':
-        return <PlatformPage language={language} />;
-      case 'candidates':
-        return <CandidatesPage language={language} />;
-      case 'news':
-        return <NewsPage language={language} />;
-      case 'resources':
-        return <div className="min-h-screen py-16">
-          <div className="w-full px-6 lg:px-12">
-            <h1 className={`text-4xl font-bold text-center mb-8 ${language === 'hi' ? 'font-hindi' : ''}`}>
-              {language === 'en' ? 'Resources' : 'संसाधन'}
-            </h1>
-            <p className={`text-lg text-center text-gray-600 ${language === 'hi' ? 'font-hindi' : ''}`}>
-              {language === 'en' ? 'This page is under construction.' : 'यह पृष्ठ निर्माणाधीन है।'}
-            </p>
-          </div>
-        </div>;
-      case 'contact':
-        return <div className="min-h-screen py-16">
-          <div className="w-full px-6 lg:px-12">
-            <h1 className={`text-4xl font-bold text-center mb-8 ${language === 'hi' ? 'font-hindi' : ''}`}>
-              {language === 'en' ? 'Contact Us' : 'संपर्क करें'}
-            </h1>
-            <p className={`text-lg text-center text-gray-600 ${language === 'hi' ? 'font-hindi' : ''}`}>
-              {language === 'en' ? 'This page is under construction.' : 'यह पृष्ठ निर्माणाधीन है।'}
-            </p>
-          </div>
-        </div>;
-      default:
-        return <HomePage language={language} setCurrentPage={setCurrentPage} />;
+// Main App Layout Component
+function AppLayout() {
+  // Initialize language from localStorage or default to Hindi
+  const [language, setLanguage] = useState<'en' | 'hi'>(() => {
+    const savedLanguage = localStorage.getItem('vss-website-language');
+    return (savedLanguage as 'en' | 'hi') || 'hi';
+  });
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Save language preference to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('vss-website-language', language);
+  }, [language]);
+
+  // Scroll to top whenever the route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  // Get current page from URL path
+  const getCurrentPage = () => {
+    const path = location.pathname;
+    if (path === '/') return 'home';
+    return path.substring(1); // Remove leading slash
+  };
+
+  const setCurrentPage = (page: string) => {
+    if (page === 'home') {
+      navigate('/');
+    } else {
+      navigate(`/${page}`);
     }
+    // Scroll to top after navigation
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -56,14 +55,69 @@ function App() {
       <Header
         language={language}
         setLanguage={setLanguage}
-        currentPage={currentPage}
+        currentPage={getCurrentPage()}
         setCurrentPage={setCurrentPage}
       />
       <main className="flex-1">
-        {renderPage()}
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage language={language} setCurrentPage={setCurrentPage} />}
+          />
+          <Route
+            path="/about"
+            element={<AboutPage language={language} />}
+          />
+          <Route
+            path="/platform"
+            element={<PlatformPage language={language} setCurrentPage={setCurrentPage} />}
+          />
+          <Route
+            path="/members"
+            element={<CandidatesPage language={language} />}
+          />
+          <Route
+            path="/assurance"
+            element={<AssurancePage language={language} />}
+          />
+          <Route
+            path="/contact"
+            element={<ContactPage language={language} />}
+          />
+          <Route
+            path="/news"
+            element={<NewsPage language={language} />}
+          />
+          <Route
+            path="/resources"
+            element={
+              <div className="min-h-screen py-16">
+                <div className="w-full px-6 lg:px-12">
+                  <h1 className={`text-4xl font-bold text-center mb-8 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                    {language === 'en' ? 'Resources' : 'संसाधन'}
+                  </h1>
+                  <p className={`text-lg text-center text-gray-600 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                    {language === 'en' ? 'This page is under construction.' : 'यह पृष्ठ निर्माणाधीन है।'}
+                  </p>
+                </div>
+              </div>
+            }
+          />
+          {/* Redirect any unknown routes to home */}
+          <Route path="*" element={<HomePage language={language} setCurrentPage={setCurrentPage} />} />
+        </Routes>
       </main>
-      <Footer language={language} setCurrentPage={setCurrentPage} />
+      <Footer language={language} />
+      <ScrollToTop />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppLayout />
+    </Router>
   );
 }
 

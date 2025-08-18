@@ -6,39 +6,44 @@ import { Button } from './ui/button';
 
 interface PlatformPageProps {
     language: 'en' | 'hi';
+    setCurrentPage: (page: string) => void;
 }
 
-const PlatformPage: React.FC<PlatformPageProps> = ({ language }) => {
+const PlatformPage: React.FC<PlatformPageProps> = ({ language, setCurrentPage }) => {
     const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
     const platformDetails = [
         {
             icon: Users,
-            title: { en: "Faculty Welfare & Rights", hi: "शिक्षक कल्याण और अधिकार" },
+            title: { en: "Beyond Symbolic Representation: Real Faculty Welfare", hi: "प्रतीकात्मक प्रतिनिधित्व से आगे: वास्तविक शिक्षक कल्याण" },
             description: {
-                en: "Comprehensive welfare measures for all faculty members",
-                hi: "सभी शिक्षक सदस्यों के लिए व्यापक कल्याणकारी उपाय"
+                en: "Moving beyond token gestures to substantial action for faculty rights and welfare",
+                hi: "केवल प्रतीकात्मकता नहीं, ठोस कार्रवाई के माध्यम से शिक्षक अधिकार और कल्याण"
             },
             points: [
                 {
-                    en: "Timely promotions and transparent evaluation processes",
-                    hi: "समय पर पदोन्नति और पारदर्शी मूल्यांकन प्रक्रिया"
+                    en: "End to arbitrary delays in promotions - Data-driven transparent evaluation system",
+                    hi: "पदोन्नति में मनमानी देरी का अंत - आंकड़ों पर आधारित पारदर्शी मूल्यांकन प्रणाली"
                 },
                 {
-                    en: "Fair compensation and regular salary reviews",
-                    hi: "निष्पक्ष मुआवजा और नियमित वेतन समीक्षा"
+                    en: "Regularization of Ad-hoc and Guest Faculty with concrete timelines",
+                    hi: "ठोस समयसीमा के साथ तदर्थ और अतिथि शिक्षकों का नियमितीकरण"
                 },
                 {
-                    en: "Enhanced medical and insurance benefits",
-                    hi: "बेहतर चिकित्सा और बीमा लाभ"
+                    en: "Implementation of 7th Pay Commission recommendations without bureaucratic hurdles",
+                    hi: "नौकरशाही बाधाओं के बिना 7वें वेतन आयोग की सिफारिशों का कार्यान्वयन"
                 },
                 {
-                    en: "Improved working conditions and infrastructure",
-                    hi: "बेहतर कार्य परिस्थितियां और बुनियादी ढांचा"
+                    en: "Legal intervention for faculty grievances - Not just committee formations",
+                    hi: "शिक्षक शिकायतों के लिए कानूनी हस्तक्षेप - केवल समिति गठन नहीं"
                 },
                 {
-                    en: "Support for sabbatical and research leaves",
-                    hi: "अवकाश और अनुसंधान छुट्टी के लिए समर्थन"
+                    en: "Comprehensive medical coverage including family members and retired faculty",
+                    hi: "परिवारजनों और सेवानिवृत्त शिक्षकों सहित व्यापक चिकित्सा कवरेज"
+                },
+                {
+                    en: "Democratic decision-making in faculty recruitment and evaluation processes",
+                    hi: "शिक्षक भर्ती और मूल्यांकन प्रक्रियाओं में लोकतांत्रिक निर्णय लेना"
                 }
             ]
         },
@@ -74,121 +79,171 @@ const PlatformPage: React.FC<PlatformPageProps> = ({ language }) => {
         },
         {
             icon: Scale,
-            title: { en: "Democratic Governance & Transparency", hi: "लोकतांत्रिक शासन और पारदर्शिता" },
+            title: { en: "Internal Democracy & Organizational Transparency", hi: "आंतरिक लोकतंत्र और संगठनात्मक पारदर्शिता" },
             description: {
-                en: "Ensuring transparent and participatory decision-making",
-                hi: "पारदर्शी और सहभागी निर्णय लेने को सुनिश्चित करना"
+                en: "Ensuring democracy within the organization - Not just talking about it externally",
+                hi: "संगठन के भीतर लोकतंत्र सुनिश्चित करना - केवल बाहर इसकी बात नहीं करना"
             },
             points: [
                 {
-                    en: "Faculty representation in all university committees",
-                    hi: "सभी विश्वविद्यालय समितियों में शिक्षक प्रतिनिधित्व"
+                    en: "Transparency at the innermost organizational levels - No centralized opacity",
+                    hi: "संगठन के अंतरतम स्तर तक पारदर्शिता - कोई केंद्रीकृत अपारदर्शिता नहीं"
                 },
                 {
-                    en: "Open communication channels with administration",
-                    hi: "प्रशासन के साथ खुले संचार चैनल"
+                    en: "Participatory decision-making with faculty input at every stage",
+                    hi: "हर चरण में शिक्षक इनपुट के साथ सहभागी निर्णय लेना"
                 },
                 {
-                    en: "Regular feedback and consultation mechanisms",
-                    hi: "नियमित फीडबैक और परामर्श तंत्र"
+                    en: "Accountability mechanisms - Leaders answerable to members, not vice versa",
+                    hi: "जवाबदेही तंत्र - नेता सदस्यों के प्रति जवाबदेह, इसके विपरीत नहीं"
                 },
                 {
-                    en: "Transparent policy formulation and implementation",
-                    hi: "पारदर्शी नीति निर्माण और कार्यान्वयन"
+                    en: "Regular audits of organizational finances and resource allocation",
+                    hi: "संगठनात्मक वित्त और संसाधन आवंटन की नियमित ऑडिट"
                 },
                 {
-                    en: "Grievance redressal and dispute resolution systems",
-                    hi: "शिकायत निवारण और विवाद समाधान प्रणाली"
+                    en: "Equal representation for all social groups - Women, SC/ST, OBC, Minorities, Differently-abled",
+                    hi: "सभी सामाजिक समूहों के लिए समान प्रतिनिधित्व - महिला, अनुसूचित जाति/जनजाति, ओबीसी, अल्पसंख्यक, दिव्यांग"
+                },
+                {
+                    en: "Accessible communication channels - Every teacher can reach leadership directly",
+                    hi: "सुलभ संचार चैनल - हर शिक्षक नेतृत्व तक सीधे पहुंच सकता है"
                 }
             ]
         },
         {
             icon: BookOpen,
-            title: { en: "Curriculum & Innovation", hi: "पाठ्यक्रम और नवाचार" },
+            title: { en: "Beyond Ideological Polarization: Problem-Focused Solutions", hi: "वैचारिक ध्रुवीकरण से आगे: समस्या-केंद्रित समाधान" },
             description: {
-                en: "Modernizing curriculum and embracing innovation",
-                hi: "पाठ्यक्रम का आधुनिकीकरण और नवाचार को अपनाना"
+                en: "Focus on real faculty problems instead of getting entangled in ideological debates",
+                hi: "वैचारिक बहसों में उलझने के बजाय वास्तविक शिक्षक समस्याओं पर ध्यान"
             },
             points: [
                 {
-                    en: "Industry-relevant curriculum updates",
-                    hi: "उद्योग-प्रासंगिक पाठ्यक्रम अपडेट"
+                    en: "Concrete solutions for appointment delays and irregular recruitment processes",
+                    hi: "नियुक्ति में देरी और अनियमित भर्ती प्रक्रियाओं के लिए ठोस समाधान"
                 },
                 {
-                    en: "Flexible learning pathways and credit systems",
-                    hi: "लचीले सीखने के मार्ग और क्रेडिट प्रणाली"
+                    en: "Systematic approach to promotion bottlenecks with timeline commitments",
+                    hi: "समयसीमा प्रतिबद्धताओं के साथ पदोन्नति बाधाओं के लिए व्यवस्थित दृष्टिकोण"
                 },
                 {
-                    en: "Interdisciplinary programs and courses",
-                    hi: "अंतःविषयक कार्यक्रम और पाठ्यक्रम"
+                    en: "Evidence-based policy advocacy using data and research",
+                    hi: "डेटा और अनुसंधान का उपयोग करके साक्ष्य-आधारित नीति वकालत"
                 },
                 {
-                    en: "Skill development and employability enhancement",
-                    hi: "कौशल विकास और रोजगार क्षमता बढ़ाना"
+                    en: "Reform of reservation policy implementation to ensure fairness",
+                    hi: "निष्पक्षता सुनिश्चित करने के लिए आरक्षण नीति कार्यान्वयन में सुधार"
                 },
                 {
-                    en: "Integration of emerging technologies in education",
-                    hi: "शिक्षा में उभरती प्रौद्योगिकियों का एकीकरण"
+                    en: "Improved service conditions and academic freedom protection",
+                    hi: "बेहतर सेवा शर्तें और शैक्षणिक स्वतंत्रता संरक्षण"
+                },
+                {
+                    en: "Institutional dialogue mechanisms for sustainable long-term reforms",
+                    hi: "स्थायी दीर्घकालिक सुधारों के लिए संस्थागत संवाद तंत्र"
+                }
+            ]
+        },
+        {
+            icon: GraduationCap,
+            title: { en: "Nation First, Teachers First Philosophy", hi: "राष्ट्र सर्वोपरि, शिक्षक प्रथम दर्शन" },
+            description: {
+                en: "Education dignity and teacher respect as the axis of national development",
+                hi: "शिक्षा की गरिमा और शिक्षक सम्मान को राष्ट्रीय विकास की धुरी के रूप में"
+            },
+            points: [
+                {
+                    en: "Building strong, self-reliant, and ethical teacher community for strong India",
+                    hi: "सशक्त भारत के लिए मजबूत, आत्मनिर्भर और नैतिक शिक्षक समुदाय का निर्माण"
+                },
+                {
+                    en: "Moving beyond political loyalties to focus on educational excellence",
+                    hi: "शैक्षणिक उत्कृष्टता पर ध्यान देने के लिए राजनीतिक वफादारी से आगे बढ़ना"
+                },
+                {
+                    en: "Integration of nationalism with democratic values in university governance",
+                    hi: "विश्वविद्यालय शासन में लोकतांत्रिक मूल्यों के साथ राष्ट्रवाद का एकीकरण"
+                },
+                {
+                    en: "Teacher empowerment as foundation for national educational advancement",
+                    hi: "राष्ट्रीय शैक्षणिक प्रगति के लिए शिक्षक सशक्तिकरण को आधार के रूप में"
+                },
+                {
+                    en: "Promoting research and innovation aligned with national priorities",
+                    hi: "राष्ट्रीय प्राथमिकताओं के साथ संरेखित अनुसंधान और नवाचार को बढ़ावा देना"
+                },
+                {
+                    en: "Building bridges between traditional knowledge and modern education",
+                    hi: "पारंपरिक ज्ञान और आधुनिक शिक्षा के बीच सेतु का निर्माण"
                 }
             ]
         },
         {
             icon: Heart,
-            title: { en: "Student-Centric Approach", hi: "छात्र-केंद्रित दृष्टिकोण" },
+            title: { en: "Inclusive & Intersensitive Approach", hi: "समावेशी और अंतःसंवेदी दृष्टिकोण" },
             description: {
-                en: "Putting students at the center of educational excellence",
-                hi: "छात्रों को शैक्षणिक उत्कृष्टता के केंद्र में रखना"
+                en: "Equal participation for all social groups in the teacher movement",
+                hi: "शिक्षक आंदोलन में सभी सामाजिक समूहों के लिए समान भागीदारी"
             },
             points: [
                 {
-                    en: "Enhanced student support services",
-                    hi: "बेहतर छात्र सहायता सेवाएं"
+                    en: "Special focus on women faculty welfare and gender equality in academia",
+                    hi: "महिला शिक्षक कल्याण और शिक्षा जगत में लैंगिक समानता पर विशेष ध्यान"
                 },
                 {
-                    en: "Mentorship and counseling programs",
-                    hi: "मेंटरशिप और काउंसलिंग कार्यक्रम"
+                    en: "Comprehensive support for SC/ST/OBC faculty career advancement",
+                    hi: "अनुसूचित जाति/जनजाति/ओबीसी शिक्षकों की करियर उन्नति के लिए व्यापक समर्थन"
                 },
                 {
-                    en: "Career guidance and placement assistance",
-                    hi: "करियर मार्गदर्शन और प्लेसमेंट सहायता"
+                    en: "Protection and promotion of minority faculty rights and interests",
+                    hi: "अल्पसंख्यक शिक्षकों के अधिकारों और हितों का संरक्षण और संवर्धन"
                 },
                 {
-                    en: "Inclusive education for all students",
-                    hi: "सभी छात्रों के लिए समावेशी शिक्षा"
+                    en: "Accessibility measures and support for differently-abled faculty members",
+                    hi: "दिव्यांग शिक्षक सदस्यों के लिए पहुंच उपाय और समर्थन"
                 },
                 {
-                    en: "Extracurricular and sports facilities",
-                    hi: "पाठ्येतर और खेल सुविधाएं"
+                    en: "Regularization pathway and equal treatment for temporary/guest faculty",
+                    hi: "अस्थायी/गेस्ट शिक्षकों के लिए नियमितीकरण मार्ग और समान व्यवहार"
+                },
+                {
+                    en: "Anti-discrimination policies and harassment prevention mechanisms",
+                    hi: "भेदभाव-रोधी नीतियां और उत्पीड़न रोकथाम तंत्र"
                 }
             ]
         },
         {
             icon: Briefcase,
-            title: { en: "Infrastructure & Resources", hi: "बुनियादी ढांचा और संसाधन" },
+            title: { en: "From Symbolic Politics to Concrete Action", hi: "प्रतीकात्मक राजनीति से ठोस कार्रवाई तक" },
             description: {
-                en: "Building world-class infrastructure and resources",
-                hi: "विश्वस्तरीय बुनियादी ढांचे और संसाधनों का निर्माण"
+                en: "Moving beyond sloganeering to policy intervention and institutional reforms",
+                hi: "नारेबाजी से आगे बढ़कर नीतिगत हस्तक्षेप और संस्थागत सुधारों की ओर"
             },
             points: [
                 {
-                    en: "Modern classrooms with smart technology",
-                    hi: "स्मार्ट तकनीक के साथ आधुनिक कक्षाएं"
+                    en: "Data-driven policy formulation based on actual faculty needs assessment",
+                    hi: "वास्तविक शिक्षक आवश्यकताओं के आकलन पर आधारित डेटा-संचालित नीति निर्माण"
                 },
                 {
-                    en: "Upgraded research laboratories and equipment",
-                    hi: "उन्नत अनुसंधान प्रयोगशालाएं और उपकरण"
+                    en: "Legal action and judicial intervention when administrative channels fail",
+                    hi: "जब प्रशासनिक चैनल विफल हों तो कानूनी कार्रवाई और न्यायिक हस्तक्षेप"
                 },
                 {
-                    en: "Digital library and online resources",
-                    hi: "डिजिटल लाइब्रेरी और ऑनलाइन संसाधन"
+                    en: "Structured dialogue with university administration for sustainable reforms",
+                    hi: "स्थायी सुधारों के लिए विश्वविद्यालय प्रशासन के साथ संरचित संवाद"
                 },
                 {
-                    en: "Campus sustainability and green initiatives",
-                    hi: "कैंपस स्थिरता और हरित पहल"
+                    en: "Timeline-bound implementation of promised reforms with regular monitoring",
+                    hi: "नियमित निगरानी के साथ वादा किए गए सुधारों का समयबद्ध कार्यान्वयन"
                 },
                 {
-                    en: "Improved hostel and dining facilities",
-                    hi: "बेहतर हॉस्टल और भोजन सुविधाएं"
+                    en: "Building coalitions with progressive educational institutions nationwide",
+                    hi: "देशव्यापी प्रगतिशील शैक्षणिक संस्थानों के साथ गठबंधन का निर्माण"
+                },
+                {
+                    en: "Research-based advocacy for policy changes at state and national levels",
+                    hi: "राज्य और राष्ट्रीय स्तर पर नीतिगत बदलावों के लिए अनुसंधान-आधारित वकालत"
                 }
             ]
         }
@@ -206,12 +261,20 @@ const PlatformPage: React.FC<PlatformPageProps> = ({ language }) => {
                     <h1 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-6 ${language === 'hi' ? 'font-hindi' : ''}`}>
                         {websiteData.platform.title[language]}
                     </h1>
-                    <p className={`text-xl text-gray-600 max-w-3xl mx-auto ${language === 'hi' ? 'font-hindi' : ''}`}>
+                    <p className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed ${language === 'hi' ? 'font-hindi' : ''}`}>
                         {language === 'en'
-                            ? 'Our comprehensive platform for transforming university education and faculty welfare.'
-                            : 'विश्वविद्यालय शिक्षा और शिक्षक कल्याण को बदलने के लिए हमारा व्यापक प्लेटफॉर्म।'
+                            ? 'VSS is not just another organization. It is a serious reformist movement that challenges current organizational failures and provides concrete solutions for faculty welfare and educational excellence.'
+                            : 'VSS केवल एक और संगठन नहीं है। यह एक गंभीर सुधारवादी आंदोलन है जो वर्तमान संगठनात्मक विफलताओं को चुनौती देता है और शिक्षक कल्याण और शैक्षणिक उत्कृष्टता के लिए ठोस समाधान प्रदान करता है।'
                         }
                     </p>
+                    <div className={`mt-8 p-6 bg-orange-50 rounded-lg border-l-4 border-l-orange-600 max-w-4xl mx-auto ${language === 'hi' ? 'font-hindi' : ''}`}>
+                        <p className="text-lg text-gray-800 font-medium">
+                            {language === 'en'
+                                ? '"A reformist and strong alternative that provides new direction - for teachers, for education, and for the nation."'
+                                : '"एक सुधारवादी और मजबूत विकल्प जो नई दिशा प्रदान करता है - शिक्षकों के लिए, शिक्षा के लिए और राष्ट्र के लिए।"'
+                            }
+                        </p>
+                    </div>
                 </div>
 
                 {/* Platform Overview */}
@@ -231,6 +294,53 @@ const PlatformPage: React.FC<PlatformPageProps> = ({ language }) => {
                         </Card>
                     ))}
                 </div>
+
+                {/* VSS Manifesto - Why We're Different */}
+                <section className="mb-16">
+                    <Card className="bg-gradient-to-r from-orange-600 to-orange-700 text-white">
+                        <CardHeader>
+                            <CardTitle className={`text-center text-3xl mb-4 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en' ? 'The VSS Difference: Beyond Traditional Politics' : 'VSS अंतर: पारंपरिक राजनीति से परे'}
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 className={`text-xl font-semibold mb-4 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                        {language === 'en' ? 'What Others Do' : 'दूसरे क्या करते हैं'}
+                                    </h4>
+                                    <ul className={`space-y-2 opacity-90 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                        <li>• {language === 'en' ? 'Get trapped in ideological polarization' : 'वैचारिक ध्रुवीकरण में फंस जाते हैं'}</li>
+                                        <li>• {language === 'en' ? 'Focus on political opportunism' : 'राजनीतिक अवसरवाद पर ध्यान देते हैं'}</li>
+                                        <li>• {language === 'en' ? 'Practice centralized and opaque governance' : 'केंद्रीकृत और अपारदर्शी शासन का अभ्यास करते हैं'}</li>
+                                        <li>• {language === 'en' ? 'Limited to symbolic representation' : 'प्रतीकात्मक प्रतिनिधित्व तक सीमित रहते हैं'}</li>
+                                        <li>• {language === 'en' ? 'Engage in sloganeering without action' : 'कार्रवाई के बिना नारेबाजी में संलग्न होते हैं'}</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className={`text-xl font-semibold mb-4 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                        {language === 'en' ? 'What VSS Does' : 'VSS क्या करता है'}
+                                    </h4>
+                                    <ul className={`space-y-2 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                        <li>• {language === 'en' ? 'Focus on real faculty problems' : 'वास्तविक शिक्षक समस्याओं पर ध्यान देता है'}</li>
+                                        <li>• {language === 'en' ? 'Prioritize teacher welfare over politics' : 'राजनीति से ऊपर शिक्षक कल्याण को प्राथमिकता देता है'}</li>
+                                        <li>• {language === 'en' ? 'Ensure democracy within organization' : 'संगठन के भीतर लोकतंत्र सुनिश्चित करता है'}</li>
+                                        <li>• {language === 'en' ? 'Take concrete action with timelines' : 'समयसीमा के साथ ठोस कार्रवाई करता है'}</li>
+                                        <li>• {language === 'en' ? 'Data-driven policy advocacy' : 'डेटा-संचालित नीति वकालत करता है'}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className={`mt-8 text-center p-4 bg-white/10 rounded-lg ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                <p className="text-lg font-medium">
+                                    {language === 'en'
+                                        ? 'VSS - National Democratic Teachers\' Front: Neither created for opposition nor just for elections. A serious reformist movement.'
+                                        : 'VSS - राष्ट्रीय डेमोक्रेटिक टीचर्स फ्रंट: न तो विरोध के लिए बना है, न ही केवल चुनाव के लिए। एक गंभीर सुधारवादी आंदोलन।'
+                                    }
+                                </p>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </section>
 
                 {/* Detailed Platform Sections */}
                 <div className="space-y-6">
@@ -293,8 +403,49 @@ const PlatformPage: React.FC<PlatformPageProps> = ({ language }) => {
                     })}
                 </div>
 
+                {/* Cast Your Valuable Vote Section */}
+                <div className="mt-20 mb-20 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12 px-8 rounded-lg">
+                    <div className="text-center">
+                        <h3 className={`text-3xl font-bold mb-6 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                            {language === 'en' ? 'Cast Your Valuable Vote' : 'अपना बहुमूल्य मत डालें'}
+                        </h3>
+                        <p className={`text-blue-100 text-xl mb-8 max-w-3xl mx-auto ${language === 'hi' ? 'font-hindi' : ''}`}>
+                            {language === 'en'
+                                ? 'Your participation matters. Exercise your democratic right and make your voice heard in shaping the future of academic excellence.'
+                                : 'आपकी भागीदारी मायने रखती है। अपने लोकतांत्रिक अधिकार का प्रयोग करें और शैक्षणिक उत्कृष्टता के भविष्य को आकार देने में अपनी आवाज सुनाएं।'
+                            }
+                        </p>
+                        <div className="bg-white bg-opacity-10 rounded-lg p-8 max-w-2xl mx-auto">
+                            <div className={`text-2xl font-bold text-yellow-300 mb-3 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en'
+                                    ? 'Thursday, 4th September, 2025'
+                                    : 'गुरुवार, 4 सितंबर, 2025'
+                                }
+                            </div>
+                            <div className={`text-blue-100 text-lg mb-4 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en'
+                                    ? 'From 10:00 AM to 5:00 PM'
+                                    : 'सुबह 10:00 बजे से शाम 5:00 बजे तक'
+                                }
+                            </div>
+                            <div className={`text-blue-100 font-medium ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en'
+                                    ? 'Faculty of Arts and Satyakam Bhawan'
+                                    : 'कला संकाय और सत्यकाम भवन'
+                                }
+                            </div>
+                            <div className={`text-blue-100 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en'
+                                    ? 'University of Delhi'
+                                    : 'दिल्ली विश्वविद्यालय'
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Call to Action */}
-                <div className="mt-16 text-center bg-gradient-to-r from-orange-600 to-orange-700 text-white py-12 px-8 rounded-lg">
+                <div className="mt-16 mb-20 text-center bg-gradient-to-r from-orange-600 to-orange-700 text-white py-12 px-8 rounded-lg">
                     <h3 className={`text-3xl font-bold mb-4 ${language === 'hi' ? 'font-hindi' : ''}`}>
                         {language === 'en' ? 'Join Us in This Journey' : 'इस यात्रा में हमारे साथ जुड़ें'}
                     </h3>
@@ -308,6 +459,7 @@ const PlatformPage: React.FC<PlatformPageProps> = ({ language }) => {
                         size="lg"
                         variant="outline"
                         className="bg-white text-orange-600 border-white hover:bg-orange-50"
+                        onClick={() => setCurrentPage('about')}
                     >
                         <span className={language === 'hi' ? 'font-hindi' : ''}>
                             {language === 'en' ? 'Learn More About VSS' : 'वीएसएस के बारे में और जानें'}

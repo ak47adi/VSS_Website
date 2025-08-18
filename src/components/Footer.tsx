@@ -17,9 +17,9 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     <div className="space-y-4">
                         <div className="flex items-start space-x-3">
                             <img
-                                src="/banner/vss-logo.png"
+                                src="/banner/vss-logo-removebg.png"
                                 alt={language === 'en' ? 'VSS Logo' : 'वीएसएस लोगो'}
-                                className="h-16 w-auto object-contain drop-shadow"
+                                className="h-12 sm:h-16 lg:h-20 w-auto object-contain drop-shadow"
                                 loading="lazy"
                             />
                             {/* <div className="pt-1">
@@ -40,23 +40,23 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                         </h4>
                         <ul className="space-y-2">
                             <li>
-                                <a href="#" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                <a href="/about" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
                                     {websiteData.navigation.about[language]}
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                <a href="/platform" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
                                     {websiteData.navigation.platform[language]}
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                <a href="/members" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
                                     {websiteData.navigation.candidates[language]}
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
-                                    {websiteData.navigation.contact[language]}
+                                <a href="/assurance" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                    {websiteData.navigation.assurance[language]}
                                 </a>
                             </li>
                         </ul>
@@ -69,16 +69,22 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                         </h4>
                         <div className="space-y-2 text-gray-300">
                             <p className={language === 'hi' ? 'font-hindi' : ''}>
-                                {language === 'en'
-                                    ? 'Email: info@vss.edu.in'
-                                    : 'ईमेल: info@vss.edu.in'
-                                }
+                                {language === 'en' ? 'Email: ' : 'ईमेल: '}
+                                <a
+                                    href="mailto:vsskamleshdu@gmail.com"
+                                    className="text-orange-400 hover:text-orange-300 underline transition-colors"
+                                >
+                                    vsskamleshdu@gmail.com
+                                </a>
                             </p>
                             <p className={language === 'hi' ? 'font-hindi' : ''}>
-                                {language === 'en'
-                                    ? 'Phone: +91-11-XXXXXXXX'
-                                    : 'फोन: +91-11-XXXXXXXX'
-                                }
+                                {language === 'en' ? 'Phone: ' : 'फोन: '}
+                                <a
+                                    href="tel:+919810298704"
+                                    className="text-orange-400 hover:text-orange-300 underline transition-colors"
+                                >
+                                    +91-9810298704
+                                </a>
                             </p>
                             <p className={language === 'hi' ? 'font-hindi' : ''}>
                                 {language === 'en'

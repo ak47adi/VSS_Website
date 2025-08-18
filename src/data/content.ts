@@ -1,3 +1,69 @@
+export const bannerSlides = [
+    {
+        id: 1,
+        title: {
+            en: "Transform Academic Excellence Together",
+            hi: "मिलकर शैक्षणिक उत्कृष्टता को बदलें"
+        },
+        subtitle: {
+            en: "A committed team with a clear vision for the future of education",
+            hi: "शिक्षा के भविष्य के लिए स्पष्ट दृष्टिकोण वाली प्रतिबद्ध टीम"
+        },
+        description: {
+            en: "Join us in creating a progressive, democratic, and transparent academic environment that puts faculty welfare and student success at the forefront.",
+            hi: "हमारे साथ एक प्रगतिशील, लोकतांत्रिक और पारदर्शी शैक्षणिक वातावरण बनाने में शामिल हों जो शिक्षक कल्याण और छात्र सफलता को प्राथमिकता देता है।"
+        },
+        image: "/banner/vss-logo.png",
+        ctaText: {
+            en: "Know Our Platform",
+            hi: "हमारी नीतियाँ जानें"
+        },
+        ctaLink: "platform"
+    },
+    {
+        id: 2,
+        title: {
+            en: "Your Voice, Your Choice",
+            hi: "आपकी आवाज़, आपकी पसंद"
+        },
+        subtitle: {
+            en: "Every vote counts in shaping the future of academic excellence",
+            hi: "शैक्षणिक उत्कृष्टता के भविष्य को आकार देने में हर वोट मायने रखता है"
+        },
+        description: {
+            en: "Exercise your democratic right on September 4th, 2025. Your participation will determine the direction of faculty welfare and institutional development.",
+            hi: "4 सितंबर, 2025 को अपने लोकतांत्रिक अधिकार का प्रयोग करें। आपकी भागीदारी शिक्षक कल्याण और संस्थागत विकास की दिशा तय करेगी।"
+        },
+        image: "/banner/vss-logo.png",
+        ctaText: {
+            en: "Voting Information",
+            hi: "मतदान जानकारी"
+        },
+        ctaLink: "home"
+    },
+    {
+        id: 3,
+        title: {
+            en: "Committed to Faculty Welfare",
+            hi: "शिक्षक कल्याण के लिए प्रतिबद्ध"
+        },
+        subtitle: {
+            en: "Concrete actions for real change in academic institutions",
+            hi: "शैक्षणिक संस्थानों में वास्तविक बदलाव के लिए ठोस कार्य"
+        },
+        description: {
+            en: "From old pension scheme implementation to regularization of ad-hoc teachers, we stand for comprehensive welfare measures that benefit every faculty member.",
+            hi: "पुरानी पेंशन योजना के कार्यान्वयन से लेकर एड-हॉक शिक्षकों के नियमितीकरण तक, हम व्यापक कल्याणकारी उपायों के लिए खड़े हैं जो हर शिक्षक सदस्य को लाभान्वित करते हैं।"
+        },
+        image: "/banner/vss-logo.png",
+        ctaText: {
+            en: "Our Assurances",
+            hi: "हमारे संकल्प"
+        },
+        ctaLink: "assurance"
+    }
+];
+
 export const websiteData = {
     header: {
         title: {
@@ -5,16 +71,16 @@ export const websiteData = {
             hi: "विश्वविद्यालय शिक्षक संघ (वीएसएस)"
         },
         subtitle: {
-            en: "A committed team, a clear vision - your vote turns hope into reality.",
-            hi: "एक प्रतिबद्ध टीम, एक स्पष्ट दृष्टिकोण - आपका वोट आशा को वास्तविकता में बदलता है।"
+            en: "A committed team, a clear vision - transforming academic excellence together.",
+            hi: "एक प्रतिबद्ध टीम, एक स्पष्ट दृष्टिकोण - मिलकर शैक्षणिक उत्कृष्टता को बदलना।"
         }
     },
     navigation: {
         home: { en: "Home", hi: "मुख्य पृष्ठ" },
         about: { en: "About", hi: "हमारे बारे में" },
         platform: { en: "Platform", hi: "नीतियाँ" },
-        candidates: { en: "Candidates", hi: "उम्मीदवार" },
-        news: { en: "News", hi: "समाचार" },
+        candidates: { en: "Members", hi: "सदस्य" },
+        assurance: { en: "Our Assurance", hi: "हमारे संकल्प" },
         resources: { en: "Resources", hi: "संसाधन" },
         contact: { en: "Contact", hi: "संपर्क" }
     },
@@ -54,23 +120,186 @@ export const websiteData = {
             }
         ]
     },
+    assurance: {
+        title: { en: "Our Assurances to the Teaching Community", hi: "शिक्षक समुदाय के लिए हमारे संकल्प" },
+        subtitle: {
+            en: "Committed to transforming the academic landscape with concrete actions and transparent governance",
+            hi: "ठोस कार्यों और पारदर्शी शासन के साथ शैक्षणिक परिदृश्य को बदलने के लिए प्रतिबद्ध"
+        },
+        points: [
+            {
+                title: { en: "Service Recognition", hi: "सेवा मान्यता" },
+                description: {
+                    en: "Ensure full past service count for promotions.",
+                    hi: "पदोन्नति के लिए पूर्ण पूर्व सेवा गणना सुनिश्चित करवाना।"
+                }
+            },
+            {
+                title: { en: "Fast-track Appointments", hi: "तीव्र नियुक्तियाँ" },
+                description: {
+                    en: "Fast-track pending interviews and complete appointments including 12 Delhi Government Colleges.",
+                    hi: "लंबित इंटरव्यू को शीघ्र पूरा करवाना और सभी नियुक्तियाँ, जिनमें 12 दिल्ली सरकार के कॉलेज भी शामिल हैं, संपन्न करवाना।"
+                }
+            },
+            {
+                title: { en: "Teacher Regularisation", hi: "शिक्षक नियमितीकरण" },
+                description: {
+                    en: "Regularise Ad-hoc and displaced teachers without delay.",
+                    hi: "एड-हॉक और विस्थापित शिक्षकों का नियमितीकरण बिना देरी के करवाना।"
+                }
+            },
+            {
+                title: { en: "Old Pension Scheme", hi: "पुरानी पेंशन योजना" },
+                description: {
+                    en: "Old Pension Scheme (OPS) for all.",
+                    hi: "सभी के लिए ओल्ड पेंशन स्कीम (OPS) लागू करवाना।"
+                }
+            },
+            {
+                title: { en: "Regular Interviews", hi: "नियमित इंटरव्यू" },
+                description: {
+                    en: "Hold regular interviews; reinstate adhoc appointments till then.",
+                    hi: "नियमित इंटरव्यू आयोजित करवाना; तब तक एड-हॉक नियुक्तियाँ पुनः बहाल करवाना।"
+                }
+            },
+            {
+                title: { en: "EWS Enhancement", hi: "ईडब्ल्यूएस वृद्धि" },
+                description: {
+                    en: "Increase EWS seats with matching faculty posts.",
+                    hi: "EWS सीटें बढ़ाना और उसके अनुरूप फैकल्टी पद सृजित करवाना।"
+                }
+            }
+        ],
+        fullList: [
+            {
+                en: "Ensure full past service count for promotions.",
+                hi: "पदोन्नति के लिए पूर्ण पूर्व सेवा गणना सुनिश्चित करवाना।"
+            },
+            {
+                en: "Fast-track pending interviews and complete appointments including 12 Delhi Government Colleges.",
+                hi: "लंबित इंटरव्यू को शीघ्र पूरा करवाना और सभी नियुक्तियाँ, जिनमें 12 दिल्ली सरकार के कॉलेज भी शामिल हैं, संपन्न करवाना।"
+            },
+            {
+                en: "Regularise Ad-hoc and displaced teachers without delay.",
+                hi: "एड-हॉक और विस्थापित शिक्षकों का नियमितीकरण बिना देरी के करवाना।"
+            },
+            {
+                en: "Old Pension Scheme (OPS) for all.",
+                hi: "सभी के लिए ओल्ड पेंशन स्कीम (OPS) लागू करवाना।"
+            },
+            {
+                en: "Hold regular interviews; reinstate adhoc appointments till then.",
+                hi: "नियमित इंटरव्यू आयोजित करवाना; तब तक एड-हॉक नियुक्तियाँ पुनः बहाल करवाना।"
+            },
+            {
+                en: "Increase EWS seats with matching faculty posts.",
+                hi: "EWS सीटें बढ़ाना और उसके अनुरूप फैकल्टी पद सृजित करवाना।"
+            },
+            {
+                en: "Abolish NFS in appointments.",
+                hi: "नियुक्तियों में Not Found Suitable (NFS) को समाप्त करवाना।"
+            },
+            {
+                en: "Protect PwD roster and reserved posts.",
+                hi: "दिव्याँग रोस्टर और उनके लिए आरक्षित पदों की रक्षा करवाना।"
+            },
+            {
+                en: "Ensure full accessibility for PwDs in campuses, All Colleges and DUTA office Also.",
+                hi: "दिव्यांग शिक्षकों के लिए पूर्ण सुगमता सुनिश्चित करवाना – कैंपस, सभी कॉलेजों और DUTA कार्यालय में।"
+            },
+            {
+                en: "Expand hospital empanelment to major cities and NCR.",
+                hi: "अस्पताल पैनल का विस्तार बड़े शहरों और NCR तक करवाना।"
+            },
+            {
+                en: "Restore M.Phil./Ph.D. increment.",
+                hi: "एम.फिल./पीएच.डी. इंक्रीमेंट बहाल करवाना।"
+            },
+            {
+                en: "Grant notional increment after promotions.",
+                hi: "पदोन्नति के बाद Notional इंक्रीमेंट सुनिश्चित करवाना।"
+            },
+            {
+                en: "Adopt UGC CARE List rules immediately.",
+                hi: "UGC CARE List नियमों को तुरंत क्रियान्वित करवाना।"
+            },
+            {
+                en: "Secure better service conditions in 8th Pay Commission.",
+                hi: "8वें वेतन आयोग में शिक्षकों के लिए बेहतर सेवा शर्तें सुनिश्चित करवाना।"
+            },
+            {
+                en: "Demand to get extra funds for NEP & EWS infrastructure needs.",
+                hi: "NEP और EWS ढांचे की जरूरतों को पूरा करने के लिए अतिरिक्त फंड की मांग करवाना।"
+            },
+            {
+                en: "Demand to open new colleges in honour of our national heroes.",
+                hi: "हमारे राष्ट्रीय नायकों के नाम पर नए कॉलेज खोलने की मांग करवाना।"
+            },
+            {
+                en: "Enforce transparent academic evaluation using refereed/peer-reviewed publications in Appointments, Promotions and in Screening of Principals post.",
+                hi: "शिक्षकों की नियुक्ति, पदोन्नति और प्रिंसिपल की स्क्रीनिंग में रेफरीड/पीयर-रिव्यू पब्लिकेशन आधारित पारदर्शी मूल्यांकन लागू करवाना।"
+            },
+            {
+                en: "Immediate filling up the seats in Department under PwDs quota such as Philosophy and other subjects.",
+                hi: "दिल्ली विश्वविद्यालय के विभागों (जैसे दर्शनशास्त्र और अन्य विषयों) में दिव्यांग कोटे की सीटों को तुरंत भरवाना।"
+            }
+        ],
+        candidates: {
+            president: { en: "Dr. Kamlesh Kumar Raghuvanshi", hi: "डॉ. कमलेश कुमार रघुवंशी" },
+            executiveMembers: [
+                { en: "Ashok Kumar Meena", hi: "अशोक कुमार मीणा" },
+                { en: "Shailendra Pathak", hi: "शैलेन्द्र पाठक" },
+                { en: "Dr. Love Kush Kumar", hi: "डॉ लव कुश कुमार" }
+            ]
+        }
+    },
     candidates: [
         {
-            name: "Dr. Rajesh Kumar",
-            position: { en: "President", hi: "अध्यक्ष" },
-            department: { en: "Department of Mathematics", hi: "गणित विभाग" },
+            name: "Dr. Kamlesh Kumar Raghuvanshi",
+            position: { en: "VSS President", hi: "VSS अध्यक्ष" },
+            department: { en: "Department of Computer Science, Ramanujan College", hi: "कंप्यूटर साइंस विभाग, रामानुजन कॉलेज" },
+            phone: "9810298704",
+            email: "vsskamleshdu@gmail.com",
+            image: "/candidates/kamlesh-raghuvanshi.jpeg",
             bio: {
-                en: "Professor with 20+ years of experience in academia and research.",
-                hi: "शिक्षा और अनुसंधान में 20+ वर्षों के अनुभव वाले प्रोफेसर।"
+                en: "Assistant Professor with extensive experience in computer science and academic administration. Committed to faculty welfare and institutional development.",
+                hi: "कंप्यूटर साइंस और शैक्षणिक प्रशासन में व्यापक अनुभव वाले सहायक प्रोफेसर। शिक्षक कल्याण और संस्थागत विकास के लिए प्रतिबद्ध।"
             }
         },
         {
-            name: "Dr. Priya Sharma",
-            position: { en: "Vice President", hi: "उपाध्यक्ष" },
-            department: { en: "Department of English", hi: "अंग्रेजी विभाग" },
+            name: "Ashok Kumar Meena",
+            position: { en: "VSS Executive Member", hi: "VSS कार्यकारिणी सदस्य" },
+            department: { en: "Department of Political Science, Gargi College", hi: "राजनीति विज्ञान विभाग, गार्गी कॉलेज" },
+            phone: "9002821510",
+            email: "vssashok60@gmail.com",
+            image: "/candidates/ashok-meena.jpeg",
             bio: {
-                en: "Associate Professor known for her dedication to student welfare and academic reforms.",
-                hi: "छात्र कल्याण और शैक्षणिक सुधारों के लिए समर्पित एसोसिएट प्रोफेसर।"
+                en: "Assistant Professor specializing in Political Science with a strong commitment to democratic governance and faculty rights.",
+                hi: "राजनीति विज्ञान में विशेषज्ञता रखने वाले सहायक प्रोफेसर जो लोकतांत्रिक शासन और शिक्षक अधिकारों के लिए दृढ़ संकल्पित हैं।"
+            }
+        },
+        {
+            name: "Dr. Luvkush Kumar",
+            position: { en: "VSS Executive Member", hi: "VSS कार्यकारिणी सदस्य" },
+            department: { en: "Department of Hindi, Kalindi College", hi: "हिंदी विभाग, कालिंदी कॉलेज" },
+            phone: "9717815554",
+            email: "vssluvkush@gmail.com",
+            image: "/candidates/luvkush-kumar.jpeg",
+            bio: {
+                en: "Assistant Professor in Hindi Literature with deep understanding of cultural and linguistic diversity in academia.",
+                hi: "हिंदी साहित्य के सहायक प्रोफेसर जो शिक्षा जगत में सांस्कृतिक और भाषाई विविधता की गहरी समझ रखते हैं।"
+            }
+        },
+        {
+            name: "Shailendra Pathak",
+            position: { en: "VSS Executive Member", hi: "VSS कार्यकारिणी सदस्य" },
+            department: { en: "Department of Political Science, Ramanujan College", hi: "राजनीति विज्ञान विभाग, रामानुजन कॉलेज" },
+            phone: "9999478949",
+            email: "vsshailendra@gmail.com",
+            image: "/candidates/shailendra-pathak.jpeg",
+            bio: {
+                en: "Assistant Professor with extensive experience in political science and a strong advocate for faculty welfare and academic excellence.",
+                hi: "राजनीति विज्ञान में व्यापक अनुभव वाले सहायक प्रोफेसर और शिक्षक कल्याण तथा शैक्षणिक उत्कृष्टता के प्रबल समर्थक।"
             }
         }
     ],
@@ -128,14 +357,14 @@ export const electionTimeline = [
         }
     },
     {
-        date: "2025-09-15",
+        date: "2025-09-04",
         event: {
-            en: "Voting Day",
-            hi: "मतदान दिवस"
+            en: "Election Day",
+            hi: "चुनाव दिवस"
         }
     },
     {
-        date: "2025-09-16",
+        date: "2025-09-05",
         event: {
             en: "Results Declaration",
             hi: "परिणाम घोषणा"
@@ -150,7 +379,7 @@ export const resources = [
         url: "#"
     },
     {
-        title: { en: "Voter Information", hi: "मतदाता जानकारी" },
+        title: { en: "Faculty Information", hi: "शिक्षक जानकारी" },
         type: "PDF",
         url: "#"
     },
@@ -164,22 +393,22 @@ export const resources = [
 export const faqData = [
     {
         question: {
-            en: "How can I register to vote?",
-            hi: "मैं वोट देने के लिए कैसे पंजीकरण कर सकता हूं?"
+            en: "How can I get involved with VSS?",
+            hi: "मैं VSS के साथ कैसे जुड़ सकता हूं?"
         },
         answer: {
-            en: "All eligible faculty members are automatically registered. Please check with the election committee for your voting details.",
-            hi: "सभी योग्य शिक्षक सदस्य स्वचालित रूप से पंजीकृत हैं। कृपया अपने मतदान विवरण के लिए चुनाव समिति से संपर्क करें।"
+            en: "All eligible faculty members can participate in our activities and initiatives. Please contact us for more information about membership and participation.",
+            hi: "सभी योग्य शिक्षक सदस्य हमारी गतिविधियों और पहलों में भाग ले सकते हैं। सदस्यता और भागीदारी के बारे में अधिक जानकारी के लिए कृपया हमसे संपर्क करें।"
         }
     },
     {
         question: {
-            en: "When is the voting date?",
-            hi: "मतदान की तारीख कब है?"
+            en: "What are the key focus areas of VSS?",
+            hi: "VSS के मुख्य फोकस क्षेत्र क्या हैं?"
         },
         answer: {
-            en: "The voting will be held on September 15, 2025. Please check the timeline for more details.",
-            hi: "मतदान 15 सितंबर, 2025 को होगा। अधिक विवरण के लिए कृपया समयसीमा देखें।"
+            en: "Our main focus areas include faculty welfare, academic excellence, transparent governance, and ensuring better working conditions for all teaching staff.",
+            hi: "हमारे मुख्य फोकस क्षेत्रों में शिक्षक कल्याण, शैक्षणिक उत्कृष्टता, पारदर्शी शासन और सभी शिक्षण कर्मचारियों के लिए बेहतर कार्य परिस्थितियां सुनिश्चित करना शामिल है।"
         }
     }
 ];

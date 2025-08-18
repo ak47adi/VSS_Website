@@ -81,6 +81,7 @@ export const websiteData = {
         platform: { en: "Platform", hi: "नीतियाँ" },
         candidates: { en: "Members", hi: "सदस्य" },
         assurance: { en: "Our Assurance", hi: "हमारे संकल्प" },
+        news: { en: "News", hi: "समाचार" },
         resources: { en: "Resources", hi: "संसाधन" },
         contact: { en: "Contact", hi: "संपर्क" }
     },

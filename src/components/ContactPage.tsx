@@ -612,7 +612,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ language }) => {
                     <Card className="border-2 border-orange-200">
                         <CardHeader className="bg-orange-50 mb-4">
                             <CardTitle className={`text-center text-xl text-orange-700 ${language === 'hi' ? 'font-hindi' : ''}`}>
-                                {language === 'en' ? 'VSS Executive Committee Members' : 'VSS कार्यकारिणी के सदस्य'}
+                                {language === 'en' ? 'DUTA Executive Member Candidates' : 'DUTA कार्यकारिणी सदस्य उम्मीदवार'}
                             </CardTitle>
                         </CardHeader>
                         <CardContent>

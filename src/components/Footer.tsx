@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                             />
                             {/* <div className="pt-1">
                 <h3 className={`text-lg font-bold text-orange-400 ${language === 'hi' ? 'font-hindi' : ''}`}>
-                  {language === 'en' ? 'Vishwavidyalaya Shikshak Sangh' : 'विश्वविद्यालय शिक्षक समिति'}
+                  {language === 'en' ? 'Vishwavidyalaya Shikshak Samiti' : 'विश्वविद्यालय शिक्षक समिति'}
                 </h3>
                 <p className={`mt-2 text-gray-300 text-sm leading-snug ${language === 'hi' ? 'font-hindi' : ''}`}>
                   {websiteData.footer.slogan[language]}

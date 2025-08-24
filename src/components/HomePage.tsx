@@ -15,7 +15,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header Section */}
-            <section className="relative min-h-[90vh] sm:min-h-screen overflow-hidden bg-[linear-gradient(to_bottom,#1e40af_0%,#ea580c_100%)] sm:bg-[linear-gradient(to_right,#1e40af_8%,#ea580c_35%,#ea580c_65%,#1e40af_92%)]">
+            <section className="relative min-h-[90vh] sm:min-h-screen overflow-hidden bg-[linear-gradient(to_bottom,#ea580c_0%,#1e40af_100%)] sm:bg-[linear-gradient(to_right,#1e40af_8%,#ea580c_35%,#ea580c_65%,#1e40af_92%)]">
                 {/* Sun rays + color glows (only on tablets/desktops) */}
                 <div className="absolute inset-0 pointer-events-none hidden sm:block">
                     {/* Subtle sun rays emanating from center */}

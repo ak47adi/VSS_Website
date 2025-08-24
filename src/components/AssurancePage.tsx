@@ -25,7 +25,7 @@ const AssurancePage: React.FC<AssurancePageProps> = ({ language }) => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Hero Section */}
-            <section className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-16">
+            <section className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16">
                 <div className="w-full px-6 lg:px-12">
                     <div className="text-center">
                         <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${language === 'hi' ? 'font-hindi' : ''}`}>
@@ -133,7 +133,7 @@ const AssurancePage: React.FC<AssurancePageProps> = ({ language }) => {
                         <Card className="border-2 border-orange-200">
                             <CardHeader className="bg-orange-50">
                                 <CardTitle className={`text-center text-xl text-orange-700 ${language === 'hi' ? 'font-hindi' : ''}`}>
-                                    {language === 'en' ? 'VSS Executive Committee Members' : 'VSS कार्यकारिणी के सदस्य'}
+                                    {language === 'en' ? 'DUTA Executive Member Candidates' : 'DUTA कार्यकारिणी सदस्य उम्मीदवार'}
                                 </CardTitle>
                             </CardHeader>
                             <CardContent className="pt-6">
@@ -173,7 +173,7 @@ const AssurancePage: React.FC<AssurancePageProps> = ({ language }) => {
                         </p>
                         <div className="text-lg font-medium">
                             <p className={language === 'hi' ? 'font-hindi' : ''}>
-                                {language === 'en' ? 'Vishwavidyalaya Shikshak Sangh (VSS)' : 'विश्वविद्यालय शिक्षक समिति (VSS)'}
+                                {language === 'en' ? 'Vishwavidyalaya Shikshak Samiti (VSS)' : 'विश्वविद्यालय शिक्षक समिति (VSS)'}
                             </p>
                             <p className={`mt-2 opacity-90 ${language === 'hi' ? 'font-hindi' : ''}`}>
                                 {language === 'en' ? 'DUTA Election 2025–2027' : 'DUTA चुनाव 2025–2027'}

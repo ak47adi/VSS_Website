@@ -16,7 +16,7 @@ async function main() {
 
     // Update metadata
     pdf.setTitle('DUTA Voter List 2025-27');
-    pdf.setAuthor('Vishwavidyalaya Shikshak Sangh (VSS)');
+    pdf.setAuthor('Vishwavidyalaya Shikshak Samiti (VSS)');
     pdf.setSubject('DUTA Electoral Roll 2025-2027');
     pdf.setProducer('VSS Website');
     pdf.setCreator('VSS Website');

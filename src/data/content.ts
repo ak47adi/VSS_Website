@@ -67,7 +67,7 @@ export const bannerSlides = [
 export const websiteData = {
     header: {
         title: {
-            en: "Vishwavidyalaya Shikshak Sangh (VSS)",
+            en: "Vishwavidyalaya Shikshak Samiti (VSS)",
             hi: "विश्वविद्यालय शिक्षक समिति (वीएसएस)"
         },
         subtitle: {
@@ -269,7 +269,7 @@ export const websiteData = {
         },
         {
             name: "Ashok Kumar Meena",
-            position: { en: "VSS Executive Member", hi: "VSS कार्यकारिणी सदस्य" },
+            position: { en: "DUTA Executive Member Candidate", hi: "DUTA कार्यकारिणी सदस्य उम्मीदवार" },
             department: { en: "Department of Political Science, Gargi College", hi: "राजनीति विज्ञान विभाग, गार्गी कॉलेज" },
             phone: "9002821510",
             email: "vssashok60@gmail.com",
@@ -281,7 +281,7 @@ export const websiteData = {
         },
         {
             name: "Dr. Luvkush Kumar",
-            position: { en: "VSS Executive Member", hi: "VSS कार्यकारिणी सदस्य" },
+            position: { en: "DUTA Executive Member Candidate", hi: "DUTA कार्यकारिणी सदस्य उम्मीदवार" },
             department: { en: "Department of Hindi, Kalindi College", hi: "हिंदी विभाग, कालिंदी कॉलेज" },
             phone: "9717815554",
             email: "vssluvkush@gmail.com",
@@ -293,7 +293,7 @@ export const websiteData = {
         },
         {
             name: "Shailendra Pathak",
-            position: { en: "VSS Executive Member", hi: "VSS कार्यकारिणी सदस्य" },
+            position: { en: "DUTA Executive Member Candidate", hi: "DUTA कार्यकारिणी सदस्य उम्मीदवार" },
             department: { en: "Department of Political Science, Ramanujan College", hi: "राजनीति विज्ञान विभाग, रामानुजन कॉलेज" },
             phone: "9999478949",
             email: "vsshailendra@gmail.com",
@@ -314,7 +314,7 @@ export const websiteData = {
                 hi: "वीएसएस चुनाव अभियान शुरू"
             },
             content: {
-                en: "The Vishwavidyalaya Shikshak Sangh has officially launched its campaign for the upcoming DUTA elections.",
+                en: "The Vishwavidyalaya Shikshak Samiti has officially launched its campaign for the upcoming DUTA elections.",
                 hi: "विश्वविद्यालय शिक्षक समिति ने आगामी डूटा चुनावों के लिए अपना अभियान आधिकारिक रूप से शुरू किया है।"
             },
             category: { en: "Election", hi: "चुनाव" }
@@ -330,7 +330,7 @@ export const websiteData = {
     ],
     footer: {
         lastUpdated: { en: "Last Updated:", hi: "अंतिम अपडेट:" },
-        ownership: { en: "© 2025 Vishwavidyalaya Shikshak Sangh", hi: "© 2025 विश्वविद्यालय शिक्षक समिति" },
+        ownership: { en: "© 2025 Vishwavidyalaya Shikshak Samiti", hi: "© 2025 विश्वविद्यालय शिक्षक समिति" },
         slogan: { en: "Education for All, Excellence for Nation", hi: "सभी के लिए शिक्षा, राष्ट्र के लिए उत्कृष्टता" }
     }
 };

@@ -15,9 +15,9 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header Section */}
-            <section className="relative min-h-[90vh] sm:min-h-screen overflow-hidden bg-[linear-gradient(to_right,#1e40af_8%,#ea580c_35%,#ea580c_65%,#1e40af_92%)]">
-                {/* Sun rays + color glows (orange center, blue fading sides) */}
-                <div className="absolute inset-0 pointer-events-none">
+            <section className="relative min-h-[90vh] sm:min-h-screen overflow-hidden bg-[linear-gradient(to_bottom,#1e40af_0%,#ea580c_100%)] sm:bg-[linear-gradient(to_right,#1e40af_8%,#ea580c_35%,#ea580c_65%,#1e40af_92%)]">
+                {/* Sun rays + color glows (only on tablets/desktops) */}
+                <div className="absolute inset-0 pointer-events-none hidden sm:block">
                     {/* Subtle sun rays emanating from center */}
                     <div className="absolute inset-0 opacity-20 bg-[repeating-conic-gradient(from_0deg_at_50%_50%,rgba(255,255,255,0.14)_0deg,rgba(255,255,255,0.14)_5deg,transparent_5deg,transparent_15deg)]"></div>
 
@@ -29,8 +29,8 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                     <div className="absolute -right-[12%] top-1/2 -translate-y-1/2 w-[35vw] h-[35vw] bg-[radial-gradient(circle_at_right,rgba(30,64,175,0.25),transparent_50%)]"></div>
                 </div>
 
-                {/* VSS Logo Background */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-5">
+                {/* VSS Logo Background (hidden on mobile) */}
+                <div className="absolute inset-0 hidden sm:flex items-center justify-center opacity-5">
                     <img
                         src="/banner/vss-logo.png"
                         alt="VSS Logo"

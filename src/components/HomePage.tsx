@@ -15,11 +15,18 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header Section */}
-            <section className="relative min-h-[90vh] sm:min-h-screen overflow-hidden bg-gradient-to-br from-orange-500 via-orange-600 to-amber-600">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -rotate-12"></div>
-                    <div className="absolute inset-0 bg-gradient-to-l from-transparent via-white/5 to-transparent transform rotate-12"></div>
+            <section className="relative min-h-[90vh] sm:min-h-screen overflow-hidden bg-[linear-gradient(to_right,#1e40af_8%,#ea580c_35%,#ea580c_65%,#1e40af_92%)]">
+                {/* Sun rays + color glows (orange center, blue fading sides) */}
+                <div className="absolute inset-0 pointer-events-none">
+                    {/* Subtle sun rays emanating from center */}
+                    <div className="absolute inset-0 opacity-20 bg-[repeating-conic-gradient(from_0deg_at_50%_50%,rgba(255,255,255,0.14)_0deg,rgba(255,255,255,0.14)_5deg,transparent_5deg,transparent_15deg)]"></div>
+
+                    {/* Central orange glow (expanded) */}
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[110vw] h-[110vw] bg-[radial-gradient(ellipse_at_center,rgba(251,146,60,0.55)_0%,rgba(251,146,60,0.30)_50%,transparent_85%)]"></div>
+
+                    {/* Blue fading points at sides (reduced) */}
+                    <div className="absolute -left-[12%] top-1/2 -translate-y-1/2 w-[35vw] h-[35vw] bg-[radial-gradient(circle_at_left,rgba(30,64,175,0.25),transparent_50%)]"></div>
+                    <div className="absolute -right-[12%] top-1/2 -translate-y-1/2 w-[35vw] h-[35vw] bg-[radial-gradient(circle_at_right,rgba(30,64,175,0.25),transparent_50%)]"></div>
                 </div>
 
                 {/* VSS Logo Background */}
@@ -79,7 +86,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                             size="default"
                                             variant="outline"
                                             className="bg-white text-orange-600 hover:bg-orange-50 text-xs sm:text-sm md:text-base px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 shadow-lg hover:shadow-xl transition-all duration-200"
-                                            onClick={() => setCurrentPage('members')}
+                                            onClick={() => setCurrentPage('duta-elections')}
                                         >
                                             <span className={language === 'hi' ? 'font-hindi' : ''}>
                                                 {language === 'en' ? 'Meet Our Leadership' : 'हमारे नेतृत्व से मिलें'}
@@ -563,7 +570,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                         {/* Contact Button */}
                                         <div className="pt-4 sm:pt-6">
                                             <Button
-                                                onClick={() => setCurrentPage('members')}
+                                                onClick={() => setCurrentPage('duta-elections')}
                                                 className="bg-orange-600 hover:bg-orange-700 text-white transition-colors duration-200 w-full sm:w-auto"
                                             >
                                                 <span className={language === 'hi' ? 'font-hindi' : ''}>
@@ -575,6 +582,80 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Feedback Invitation Section */}
+            <section className="py-20 bg-gradient-to-r from-orange-600 to-orange-700 text-white">
+                <div className="w-full px-6 lg:px-12">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="text-center mb-10">
+                            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en' ? 'Share Your Feedback' : 'अपना सुझाव साझा करें'}
+                            </h2>
+                            <p className={`text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en'
+                                    ? 'Your suggestions help us refine our agenda, policies, and on-ground actions. Tell us what matters most to you and your college.'
+                                    : 'आपके सुझाव हमारे एजेंडा, नीतियों और जमीनी कार्यों को बेहतर बनाते हैं। हमें बताएं कि आपके और आपके कॉलेज के लिए क्या सबसे महत्वपूर्ण है।'}
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                            <div className="bg-white/10 rounded-lg p-6">
+                                <div className="flex items-start">
+                                    <CheckCircle className="w-6 h-6 mt-1 mr-3 text-white" />
+                                    <div>
+                                        <h3 className={`font-semibold text-white mb-1 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                            {language === 'en' ? 'Shape Our Agenda' : 'हमारे एजेंडा को आकार दें'}
+                                        </h3>
+                                        <p className={`text-white/85 text-sm ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                            {language === 'en' ? 'Guide priorities with real faculty needs.' : 'वास्तविक शिक्षक आवश्यकताओं से प्राथमिकताएं तय करें।'}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bg-white/10 rounded-lg p-6">
+                                <div className="flex items-start">
+                                    <CheckCircle className="w-6 h-6 mt-1 mr-3 text-white" />
+                                    <div>
+                                        <h3 className={`font-semibold text-white mb-1 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                            {language === 'en' ? 'Improve Policies' : 'नीतियों में सुधार'}
+                                        </h3>
+                                        <p className={`text-white/85 text-sm ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                            {language === 'en' ? 'Make governance transparent and responsive.' : 'शासन को पारदर्शी और संवेदनशील बनाएं।'}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bg-white/10 rounded-lg p-6">
+                                <div className="flex items-start">
+                                    <CheckCircle className="w-6 h-6 mt-1 mr-3 text-white" />
+                                    <div>
+                                        <h3 className={`font-semibold text-white mb-1 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                            {language === 'en' ? 'Drive Real Change' : 'वास्तविक बदलाव लाएं'}
+                                        </h3>
+                                        <p className={`text-white/85 text-sm ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                            {language === 'en' ? 'Turn ideas into action for every campus.' : 'हर कैंपस के लिए विचारों को कार्रवाई में बदलें।'}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="text-center">
+                            <Button
+                                size="lg"
+                                onClick={() => {
+                                    try { sessionStorage.setItem('scrollToFeedback', '1'); } catch { }
+                                    setCurrentPage('contact');
+                                }}
+                                className="bg-white text-orange-700 hover:bg-orange-50 text-lg px-8 py-4"
+                            >
+                                <span className={language === 'hi' ? 'font-hindi' : ''}>
+                                    {language === 'en' ? 'Submit Your Feedback' : 'अपना सुझाव भेजें'}
+                                </span>
+                                <ArrowRight className="ml-2 w-5 h-5" />
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -671,7 +752,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                             <Button
                                 size="lg"
                                 variant="outline"
-                                onClick={() => setCurrentPage('members')}
+                                onClick={() => setCurrentPage('duta-elections')}
                                 className="border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white text-lg px-8 py-4 transition-all duration-200"
                             >
                                 <span className={language === 'hi' ? 'font-hindi' : ''}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Mail, Phone } from 'lucide-react';
+import { User, Mail, Phone, Download } from 'lucide-react';
 import { websiteData } from '../data/content';
 import { Card, CardContent } from './ui/card';
 
@@ -13,7 +13,7 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
             <div className="w-full px-6 lg:px-12">
                 <div className="text-center mb-12">
                     <h1 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-4 ${language === 'hi' ? 'font-hindi' : ''}`}>
-                        {websiteData.navigation.candidates[language]}
+                        {language === 'en' ? 'VSS Members for DUTA Elections 2025-26' : 'DUTA चुनाव 2025-26 के लिए VSS सदस्य'}
                     </h1>
                     <p className={`text-xl text-gray-600 max-w-3xl mx-auto ${language === 'hi' ? 'font-hindi' : ''}`}>
                         {language === 'en'
@@ -297,6 +297,34 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
                     </div>
+                </div>
+
+                {/* Voter List Download Section */}
+                <div className="mt-16">
+                    <Card className="bg-white border border-orange-200">
+                        <CardContent className="p-8 text-center">
+                            <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 mb-3 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en' ? 'Know Our Voters' : 'हमारे मतदाताओं को जानें'}
+                            </h2>
+                            <p className={`text-gray-600 text-lg mb-6 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en'
+                                    ? 'Download the official DUTA Voter List (2025–27).'
+                                    : 'DUTA की आधिकारिक मतदाता सूची (2025–27) डाउनलोड करें।'}
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <a
+                                    href="/DUTA_Voter_List_2025-27.pdf"
+                                    download="DUTA_Voter_List_2025-27.pdf"
+                                    className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors"
+                                >
+                                    <Download className="w-5 h-5 mr-2" />
+                                    <span className={language === 'hi' ? 'font-hindi' : ''}>
+                                        {language === 'en' ? 'Download Voter List (PDF)' : 'मतदाता सूची डाउनलोड करें (PDF)'}
+                                    </span>
+                                </a>
+                            </div>
+                        </CardContent>
+                    </Card>
                 </div>
 
                 {/* Cast Your Valuable Vote Section */}

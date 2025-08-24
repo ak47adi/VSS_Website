@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { websiteData } from '../data/content';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 
 interface NewsPageProps {
@@ -9,57 +10,37 @@ interface NewsPageProps {
 }
 
 const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
-    const additionalNews = [
-        {
-            date: "2025-08-01",
-            title: {
-                en: "Academic Reforms Proposal Submitted",
-                hi: "शैक्षणिक सुधार प्रस्ताव प्रस्तुत"
-            },
-            content: {
-                en: "VSS has submitted a comprehensive proposal for academic reforms focusing on faculty development and student welfare.",
-                hi: "वीएसएस ने शिक्षक विकास और छात्र कल्याण पर केंद्रित एक व्यापक शैक्षणिक सुधार प्रस्ताव प्रस्तुत किया है।"
-            },
-            category: {
-                en: "Academic",
-                hi: "शैक्षणिक"
-            }
-        },
-        {
-            date: "2025-07-25",
-            title: {
-                en: "Faculty Development Workshop Announced",
-                hi: "शिक्षक विकास कार्यशाला की घोषणा"
-            },
-            content: {
-                en: "A comprehensive workshop on modern teaching methodologies and research techniques will be conducted next month.",
-                hi: "आधुनिक शिक्षण पद्धतियों और अनुसंधान तकनीकों पर एक व्यापक कार्यशाला अगले महीने आयोजित की जाएगी।"
-            },
-            category: {
-                en: "Workshop",
-                hi: "कार्यशाला"
-            }
-        },
-        {
-            date: "2025-07-20",
-            title: {
-                en: "Infrastructure Development Plan",
-                hi: "बुनियादी ढांचा विकास योजना"
-            },
-            content: {
-                en: "New plans for upgrading university infrastructure including libraries, laboratories, and digital facilities.",
-                hi: "पुस्तकालय, प्रयोगशाला और डिजिटल सुविधाओं सहित विश्वविद्यालय के बुनियादी ढांचे के उन्नयन की नई योजनाएं।"
-            },
-            category: {
-                en: "Infrastructure",
-                hi: "बुनियादी ढांचा"
-            }
-        }
-    ];
+    // Live relative time label state (updates every minute)
+    const [now, setNow] = useState<Date>(new Date());
+    useEffect(() => {
+        const id = setInterval(() => setNow(new Date()), 60_000);
+        return () => clearInterval(id);
+    }, []);
 
-    const allNews = [...websiteData.news, ...additionalNews].sort((a, b) =>
+    // News items are sourced from websiteData.news
+    const allNews = [...websiteData.news].sort((a, b) =>
         new Date(b.date).getTime() - new Date(a.date).getTime()
     );
+
+    // Bilingual relative time: Just now / X minutes ago / X hours ago / Yesterday / X days ago
+    const formatRelativeTime = (isoDate: string): string => {
+        const published = new Date(isoDate);
+        const diffMs = now.getTime() - published.getTime();
+        if (diffMs < 60_000) return language === 'en' ? 'Just now' : 'अभी';
+        const diffMin = Math.floor(diffMs / 60_000);
+        if (diffMin < 60) {
+            if (language === 'en') return `${diffMin} minute${diffMin === 1 ? '' : 's'} ago`;
+            return `${diffMin} मिनट पहले`;
+        }
+        const diffHr = Math.floor(diffMin / 60);
+        if (diffHr < 24) {
+            if (language === 'en') return `${diffHr} hour${diffHr === 1 ? '' : 's'} ago`;
+            return `${diffHr} घंटे पहले`;
+        }
+        const diffDay = Math.floor(diffHr / 24);
+        if (diffDay === 1) return language === 'en' ? 'Yesterday' : 'कल';
+        return language === 'en' ? `${diffDay} days ago` : `${diffDay} दिन पहले`;
+    };
 
     const getCategoryColor = (category: string) => {
         const colors: { [key: string]: string } = {
@@ -70,7 +51,9 @@ const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
             'Infrastructure': 'bg-purple-100 text-purple-800',
             'बुनियादी ढांचा': 'bg-purple-100 text-purple-800',
             'Election': 'bg-orange-100 text-orange-800',
-            'चुनाव': 'bg-orange-100 text-orange-800'
+            'चुनाव': 'bg-orange-100 text-orange-800',
+            'Welfare': 'bg-yellow-100 text-yellow-800',
+            'कल्याण': 'bg-yellow-100 text-yellow-800'
         };
         return colors[category] || 'bg-gray-100 text-gray-800';
     };
@@ -90,11 +73,11 @@ const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
                     </p>
                 </div>
 
-                {/* Featured News */}
+                {/* Latest News (single item) */}
                 {allNews.length > 0 && (
                     <div className="mb-12">
                         <h2 className={`text-2xl font-bold text-gray-900 mb-6 ${language === 'hi' ? 'font-hindi' : ''}`}>
-                            {language === 'en' ? 'Featured News' : 'मुख्य समाचार'}
+                            {language === 'en' ? 'Latest Update' : 'नवीनतम अपडेट'}
                         </h2>
                         <Card className="overflow-hidden hover:shadow-lg transition-shadow border-l-4 border-l-orange-600">
                             <CardHeader className="bg-gradient-to-r from-orange-50 to-orange-100">
@@ -123,97 +106,40 @@ const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
                                 <p className={`text-gray-700 text-lg leading-relaxed ${language === 'hi' ? 'font-hindi' : ''}`}>
                                     {allNews[0].content[language]}
                                 </p>
-                                <div className="mt-4 flex items-center text-orange-600">
-                                    <Clock className="w-4 h-4 mr-2" />
-                                    <span className="text-sm">
-                                        {language === 'en' ? 'Just published' : 'अभी प्रकाशित'}
-                                    </span>
+                                <div className="mt-6 flex items-center justify-between">
+                                    <div className="flex items-center text-orange-600">
+                                        <Clock className="w-4 h-4 mr-2" />
+                                        <span className="text-sm">
+                                            {formatRelativeTime(allNews[0].date)}
+                                        </span>
+                                    </div>
+                                    <Link to={`/news/${(allNews[0] as any).slug}`}>
+                                        <Button
+                                            variant="ghost"
+                                            size="sm"
+                                            className="p-0 h-auto text-orange-600 hover:text-orange-700"
+                                        >
+                                            <span className={language === 'hi' ? 'font-hindi' : ''}>
+                                                {language === 'en' ? 'Read more' : 'और पढ़ें'}
+                                            </span>
+                                            <ArrowRight className="inline ml-1 w-4 h-4" />
+                                        </Button>
+                                    </Link>
                                 </div>
                             </CardContent>
                         </Card>
                     </div>
                 )}
-
-                {/* All News */}
-                <div>
-                    <h2 className={`text-2xl font-bold text-gray-900 mb-6 ${language === 'hi' ? 'font-hindi' : ''}`}>
-                        {language === 'en' ? 'All Updates' : 'सभी अपडेट'}
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {allNews.slice(1).map((news, index) => (
-                            <Card key={index} className="hover:shadow-lg transition-shadow">
-                                <CardHeader>
-                                    <div className="flex items-center justify-between mb-2">
-                                        <div className="flex items-center space-x-2">
-                                            <Calendar className="w-4 h-4 text-orange-600" />
-                                            <CardDescription className="text-orange-600 font-medium">
-                                                {new Date(news.date).toLocaleDateString(language === 'hi' ? 'hi-IN' : 'en-US')}
-                                            </CardDescription>
-                                        </div>
-                                        {(news as any).category && (
-                                            <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${getCategoryColor((news as any).category[language])}`}>
-                                                {(news as any).category[language]}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <CardTitle className={`text-lg leading-tight ${language === 'hi' ? 'font-hindi' : ''}`}>
-                                        {news.title[language]}
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className={`text-gray-700 text-sm leading-relaxed ${language === 'hi' ? 'font-hindi' : ''}`}>
-                                        {news.content[language]}
-                                    </p>
-                                    <Button
-                                        variant="ghost"
-                                        size="sm"
-                                        className="mt-4 p-0 h-auto text-orange-600 hover:text-orange-700"
-                                    >
-                                        <span className={language === 'hi' ? 'font-hindi' : ''}>
-                                            {language === 'en' ? 'Read more' : 'और पढ़ें'}
-                                        </span>
-                                        <ArrowRight className="ml-1 w-4 h-4" />
-                                    </Button>
-                                </CardContent>
-                            </Card>
-                        ))}
+                {/* Newsletter Subscription (commented out for now) */}
+                {false && (
+                    <div className="mt-16">
+                        <Card className="bg-gradient-to-r from-orange-600 to-orange-700 text-white">
+                            <CardContent className="p-8 text-center">
+                                {/* ...newsletter UI... */}
+                            </CardContent>
+                        </Card>
                     </div>
-                </div>
-
-                {/* Newsletter Subscription */}
-                <div className="mt-16">
-                    <Card className="bg-gradient-to-r from-orange-600 to-orange-700 text-white">
-                        <CardContent className="p-8 text-center">
-                            <h2 className={`text-2xl font-bold mb-4 ${language === 'hi' ? 'font-hindi' : ''}`}>
-                                {language === 'en'
-                                    ? 'Stay Updated with VSS'
-                                    : 'वीएसएस के साथ अपडेट रहें'
-                                }
-                            </h2>
-                            <p className={`text-orange-100 mb-6 max-w-2xl mx-auto ${language === 'hi' ? 'font-hindi' : ''}`}>
-                                {language === 'en'
-                                    ? 'Subscribe to our newsletter to receive the latest updates, announcements, and important information directly in your inbox.'
-                                    : 'नवीनतम अपडेट, घोषणाएं और महत्वपूर्ण जानकारी सीधे अपने इनबॉक्स में प्राप्त करने के लिए हमारे न्यूजलेटर की सदस्यता लें।'
-                                }
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                                <input
-                                    type="email"
-                                    placeholder={language === 'en' ? 'Enter your email' : 'अपना ईमेल दर्ज करें'}
-                                    className="flex-1 px-4 py-2 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-300"
-                                />
-                                <Button
-                                    variant="secondary"
-                                    className="bg-white text-orange-600 hover:bg-orange-50"
-                                >
-                                    <span className={language === 'hi' ? 'font-hindi' : ''}>
-                                        {language === 'en' ? 'Subscribe' : 'सदस्यता लें'}
-                                    </span>
-                                </Button>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </div>
+                )}
             </div>
         </div>
     );

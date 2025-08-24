@@ -7,6 +7,7 @@ import CandidatesPage from './components/CandidatesPage';
 import AssurancePage from './components/AssurancePage';
 import ContactPage from './components/ContactPage';
 import NewsPage from './components/NewsPage';
+import NewsDetailPage from './components/NewsDetailPage';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
@@ -73,6 +74,11 @@ function AppLayout() {
             element={<PlatformPage language={language} setCurrentPage={setCurrentPage} />}
           />
           <Route
+            path="/duta-elections"
+            element={<CandidatesPage language={language} />}
+          />
+          {/* Backward compatibility: redirect old slug to new */}
+          <Route
             path="/members"
             element={<CandidatesPage language={language} />}
           />
@@ -87,6 +93,10 @@ function AppLayout() {
           <Route
             path="/news"
             element={<NewsPage language={language} />}
+          />
+          <Route
+            path="/news/:slug"
+            element={<NewsDetailPage language={language} />}
           />
           <Route
             path="/resources"

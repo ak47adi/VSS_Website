@@ -68,7 +68,7 @@ export const websiteData = {
     header: {
         title: {
             en: "Vishwavidyalaya Shikshak Sangh (VSS)",
-            hi: "विश्वविद्यालय शिक्षक संघ (वीएसएस)"
+            hi: "विश्वविद्यालय शिक्षक समिति (वीएसएस)"
         },
         subtitle: {
             en: "A committed team, a clear vision - transforming academic excellence together.",
@@ -79,7 +79,7 @@ export const websiteData = {
         home: { en: "Home", hi: "मुख्य पृष्ठ" },
         about: { en: "About", hi: "हमारे बारे में" },
         platform: { en: "Platform", hi: "नीतियाँ" },
-        candidates: { en: "Members", hi: "सदस्य" },
+        candidates: { en: "DUTA Elections 2025-26", hi: "DUTA चुनाव 2025-26" },
         assurance: { en: "Our Assurance", hi: "हमारे संकल्प" },
         news: { en: "News", hi: "समाचार" },
         resources: { en: "Resources", hi: "संसाधन" },
@@ -257,7 +257,7 @@ export const websiteData = {
     candidates: [
         {
             name: "Dr. Kamlesh Kumar Raghuvanshi",
-            position: { en: "VSS President", hi: "VSS अध्यक्ष" },
+            position: { en: "DUTA President Candidate", hi: "DUTA अध्यक्ष पद के उम्मीदवार" },
             department: { en: "Department of Computer Science, Ramanujan College", hi: "कंप्यूटर साइंस विभाग, रामानुजन कॉलेज" },
             phone: "9810298704",
             email: "vsskamleshdu@gmail.com",
@@ -304,33 +304,33 @@ export const websiteData = {
             }
         }
     ],
+    // NEWS: Single source of truth. Add/edit items here. Each item must have a unique slug (used in /news/:slug).
     news: [
         {
-            date: "2025-08-10",
+            slug: "vss-election-campaign-begins",
+            date: "2025-08-25",
             title: {
                 en: "VSS Election Campaign Begins",
                 hi: "वीएसएस चुनाव अभियान शुरू"
             },
             content: {
                 en: "The Vishwavidyalaya Shikshak Sangh has officially launched its campaign for the upcoming DUTA elections.",
-                hi: "विश्वविद्यालय शिक्षक संघ ने आगामी डूटा चुनावों के लिए अपना अभियान आधिकारिक रूप से शुरू किया है।"
-            }
-        },
-        {
-            date: "2025-08-05",
-            title: {
-                en: "Faculty Welfare Initiatives Announced",
-                hi: "शिक्षक कल्याण पहल की घोषणा"
+                hi: "विश्वविद्यालय शिक्षक समिति ने आगामी डूटा चुनावों के लिए अपना अभियान आधिकारिक रूप से शुरू किया है।"
             },
-            content: {
-                en: "New proposals for improving faculty working conditions and career advancement opportunities.",
-                hi: "शिक्षक कार्य परिस्थितियों और करियर उन्नति के अवसरों में सुधार के लिए नए प्रस्ताव।"
-            }
+            category: { en: "Election", hi: "चुनाव" }
         }
+        // To add more news later, uncomment examples below and edit:
+        // ,{
+        //     slug: "faculty-welfare-initiatives-announced",
+        //     date: "2025-08-05",
+        //     title: { en: "Faculty Welfare Initiatives Announced", hi: "शिक्षक कल्याण पहल की घोषणा" },
+        //     content: { en: "New proposals for improving faculty working conditions and career advancement opportunities.", hi: "शिक्षक कार्य परिस्थितियों और करियर उन्नति के अवसरों में सुधार के लिए नए प्रस्ताव।" },
+        //     category: { en: "Welfare", hi: "कल्याण" }
+        // }
     ],
     footer: {
         lastUpdated: { en: "Last Updated:", hi: "अंतिम अपडेट:" },
-        ownership: { en: "© 2025 Vishwavidyalaya Shikshak Sangh", hi: "© 2025 विश्वविद्यालय शिक्षक संघ" },
+        ownership: { en: "© 2025 Vishwavidyalaya Shikshak Sangh", hi: "© 2025 विश्वविद्यालय शिक्षक समिति" },
         slogan: { en: "Education for All, Excellence for Nation", hi: "सभी के लिए शिक्षा, राष्ट्र के लिए उत्कृष्टता" }
     }
 };

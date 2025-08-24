@@ -17,8 +17,9 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage, currentPage, set
         { key: 'home', label: websiteData.navigation.home },
         { key: 'about', label: websiteData.navigation.about },
         { key: 'platform', label: websiteData.navigation.platform },
-        { key: 'members', label: websiteData.navigation.candidates },
+        { key: 'duta-elections', label: websiteData.navigation.candidates },
         { key: 'assurance', label: websiteData.navigation.assurance },
+        { key: 'news', label: websiteData.navigation.news },
         // { key: 'resources', label: websiteData.navigation.resources },
         { key: 'contact', label: websiteData.navigation.contact },
     ];

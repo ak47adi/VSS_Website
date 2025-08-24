@@ -48,7 +48,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ language }) => {
                             <p className={`text-gray-700 text-lg leading-relaxed font-semibold ${language === 'hi' ? 'font-hindi' : ''}`}>
                                 {language === 'en'
                                     ? 'It is in this context that VSS – Vishwavidyalaya Shikshak Sangh has been formed. It embodies both reaction and resolution. It is an organization born from the reaction to the failures of current organizations, and resolved to create a platform completely dedicated to equality, reform, and teacher interests.'
-                                    : 'इसी संदर्भ में VSS – विश्वविद्यालय शिक्षक संघ का गठन हुआ है। इसमें अनुक्रियाशील भी है और संकल्प भी। यह वर्तमान संगठनों की विफलताओं की अनुक्रिया से उपजा संगठन है, और संकल्प एक ऐसे मंच के निर्माण का जो समानता, सुधार और शिक्षक-हितों के प्रति पूरी तरह समर्पित हो।'
+                                    : 'इसी संदर्भ में VSS – विश्वविद्यालय शिक्षक समिति का गठन हुआ है। इसमें अनुक्रियाशील भी है और संकल्प भी। यह वर्तमान संगठनों की विफलताओं की अनुक्रिया से उपजा संगठन है, और संकल्प एक ऐसे मंच के निर्माण का जो समानता, सुधार और शिक्षक-हितों के प्रति पूरी तरह समर्पित हो।'
                                 }
                             </p>
                         </CardContent>

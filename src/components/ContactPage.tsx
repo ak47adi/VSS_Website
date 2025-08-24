@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 import { Phone, Mail, MapPin, Clock, Building2 } from 'lucide-react';
 import { websiteData } from '../data/content';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
@@ -9,6 +11,126 @@ interface ContactPageProps {
 }
 
 const ContactPage: React.FC<ContactPageProps> = ({ language }) => {
+    const location = useLocation();
+    // Feedback form state
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        category: 'Suggestion',
+        message: '',
+        honey: '' // simple honeypot
+    });
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+    const [errors, setErrors] = useState<{ name?: string; email?: string; phone?: string; message?: string }>({});
+
+    const formEndpoint = import.meta.env.VITE_FORM_ENDPOINT as string | undefined;
+    const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
+    const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined;
+    const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
+
+    const categories = [
+        { value: 'Suggestion', label: { en: 'Suggestion', hi: 'सुझाव' } },
+        { value: 'Agenda', label: { en: 'Agenda', hi: 'एजेंडा' } },
+        { value: 'Development Idea', label: { en: 'Development Idea', hi: 'विकास का विचार' } },
+        { value: 'Other', label: { en: 'Other', hi: 'अन्य' } }
+    ];
+
+    const isValidIndianPhone = (input: string) => {
+        const digits = input.replace(/\D/g, '');
+        if (digits.length === 0) return true; // optional field
+        return digits.length === 10; // only 10-digit numbers
+    };
+
+    const buildErrors = () => {
+        const e: { name?: string; email?: string; phone?: string; message?: string } = {};
+        const req = (en: string, hi: string) => (language === 'en' ? en : hi);
+        if (!form.name.trim()) e.name = req('Name is required.', 'नाम आवश्यक है।');
+        if (!form.email.trim()) {
+            e.email = req('Email is required.', 'ईमेल आवश्यक है।');
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+            e.email = req('Enter a valid email address.', 'कृपया मान्य ईमेल दर्ज करें।');
+        }
+        if (form.phone.trim() && !isValidIndianPhone(form.phone)) {
+            e.phone = req('Enter a valid 10-digit phone number.', 'मान्य 10 अंकों का फोन नंबर दर्ज करें।');
+        }
+        if (!form.message.trim()) e.message = req('Message is required.', 'संदेश आवश्यक है।');
+        if (form.honey) {
+            // If honeypot is filled, act like a generic error without revealing bot logic
+            e.name = e.name || req('Something went wrong. Please try again.', 'कुछ गलत हो गया। कृपया पुनः प्रयास करें।');
+        }
+        return e;
+    };
+
+    const handleSubmit = async (evt: React.FormEvent) => {
+        evt.preventDefault();
+        const fieldErrors = buildErrors();
+        if (Object.keys(fieldErrors).length > 0) {
+            setErrors(fieldErrors);
+            // focus first invalid field
+            const order: Array<'name' | 'email' | 'phone' | 'message'> = ['name', 'email', 'phone', 'message'];
+            const firstKey = order.find((k) => fieldErrors[k] !== undefined);
+            if (firstKey) {
+                const el = document.getElementById(`contact-${firstKey}`) as HTMLInputElement | HTMLTextAreaElement | null;
+                el?.focus();
+                el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return;
+        }
+        setStatus('sending');
+        const payload = {
+            name: form.name.trim(),
+            email: form.email.trim(),
+            phone: form.phone.trim(),
+            category: form.category,
+            message: form.message.trim(),
+            source: 'VSS Website Contact Form'
+        };
+
+        try {
+            if (EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY) {
+                // Send via EmailJS
+                const templateParams = {
+                    from_name: payload.name,
+                    reply_to: payload.email,
+                    phone: payload.phone || '-',
+                    category: payload.category,
+                    message: payload.message,
+                } as Record<string, string>;
+                const res = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
+                    publicKey: EMAILJS_PUBLIC_KEY,
+                });
+                if (res.status !== 200) throw new Error('EmailJS failed');
+                setStatus('success');
+                setForm({ name: '', email: '', phone: '', category: 'Suggestion', message: '', honey: '' });
+                setErrors({});
+            } else if (formEndpoint) {
+                const res = await fetch(formEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) throw new Error('Failed');
+                setStatus('success');
+                setForm({ name: '', email: '', phone: '', category: 'Suggestion', message: '', honey: '' });
+                setErrors({});
+            } else {
+                // Fallback to mailto
+                const to = 'kshitizkant290@gmail.com';
+                const subject = encodeURIComponent(`VSS Website Feedback: ${payload.category}`);
+                const body = encodeURIComponent(
+                    `Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone || '-'}\nCategory: ${payload.category}\n\nMessage:\n${payload.message}`
+                );
+                window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+                setStatus('success');
+                setForm({ name: '', email: '', phone: '', category: 'Suggestion', message: '', honey: '' });
+                setErrors({});
+            }
+        } catch (err) {
+            setStatus('error');
+        }
+    };
+
     const contactInfo = {
         president: {
             name: {
@@ -137,6 +259,21 @@ const ContactPage: React.FC<ContactPageProps> = ({ language }) => {
         }
     ];
 
+    // Scroll into view if navigated with intention to show feedback form
+    useEffect(() => {
+        const shouldScroll = location.hash === '#feedback' || sessionStorage.getItem('scrollToFeedback') === '1';
+        if (shouldScroll) {
+            // small delay to ensure layout is painted
+            setTimeout(() => {
+                const el = document.getElementById('feedback-form');
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                sessionStorage.removeItem('scrollToFeedback');
+            }, 50);
+        }
+    }, [location]);
+
     return (
         <div className="min-h-screen py-16">
             <div className="w-full px-6 lg:px-12">
@@ -231,6 +368,173 @@ const ContactPage: React.FC<ContactPageProps> = ({ language }) => {
                                 </CardComponent>
                             );
                         })}
+                    </div>
+                </section>
+
+                {/* Feedback / Suggestions Form */}
+                <section id="feedback-form" className="mb-16">
+                    <div className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden">
+                        <div className="bg-gradient-to-r from-orange-600 to-orange-700 p-6 md:p-8 text-white">
+                            <h2 className={`text-2xl md:text-3xl font-bold ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en' ? 'Share Your Feedback & Ideas' : 'अपना सुझाव साझा करें'}
+                            </h2>
+                            <p className={`mt-2 text-white/90 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                {language === 'en'
+                                    ? 'Send us your agenda, suggestions, or development ideas. We value every voice.'
+                                    : 'अपना एजेंडा, सुझाव या विकास के विचार साझा करें। आपकी हर राय महत्वपूर्ण है।'}
+                            </p>
+                        </div>
+                        <form noValidate onSubmit={handleSubmit} className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* Honeypot */}
+                            <input
+                                type="text"
+                                value={form.honey}
+                                onChange={(e) => setForm({ ...form, honey: e.target.value })}
+                                className="hidden"
+                                aria-hidden
+                                tabIndex={-1}
+                                autoComplete="off"
+                            />
+
+                            <div>
+                                <label className={`block text-sm font-medium text-gray-700 mb-2 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                    {language === 'en' ? 'Your Name' : 'आपका नाम'}
+                                </label>
+                                <input
+                                    type="text"
+                                    id="contact-name"
+                                    aria-invalid={!!errors.name}
+                                    aria-describedby={errors.name ? 'error-name' : undefined}
+                                    className={`w-full rounded-lg border px-4 py-3 focus:outline-none focus:ring-2 ${errors.name ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-orange-500 focus:border-orange-500'}`}
+                                    placeholder={language === 'en' ? 'Enter your full name' : 'अपना पूरा नाम लिखें'}
+                                    value={form.name}
+                                    onChange={(e) => {
+                                        setForm({ ...form, name: e.target.value });
+                                        if (errors.name) setErrors({ ...errors, name: undefined });
+                                    }}
+                                    required
+                                />
+                                {errors.name && (
+                                    <p id="error-name" className={`mt-1 text-sm text-red-600 ${language === 'hi' ? 'font-hindi' : ''}`}>{errors.name}</p>
+                                )}
+                            </div>
+
+                            <div>
+                                <label className={`block text-sm font-medium text-gray-700 mb-2 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                    {language === 'en' ? 'Your Email' : 'आपका ईमेल'}
+                                </label>
+                                <input
+                                    type="email"
+                                    id="contact-email"
+                                    aria-invalid={!!errors.email}
+                                    aria-describedby={errors.email ? 'error-email' : undefined}
+                                    className={`w-full rounded-lg border px-4 py-3 focus:outline-none focus:ring-2 ${errors.email ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-orange-500 focus:border-orange-500'}`}
+                                    placeholder={language === 'en' ? 'name@example.com' : 'name@example.com'}
+                                    value={form.email}
+                                    onChange={(e) => {
+                                        setForm({ ...form, email: e.target.value });
+                                        if (errors.email) setErrors({ ...errors, email: undefined });
+                                    }}
+                                    required
+                                />
+                                {errors.email && (
+                                    <p id="error-email" className={`mt-1 text-sm text-red-600 ${language === 'hi' ? 'font-hindi' : ''}`}>{errors.email}</p>
+                                )}
+                            </div>
+
+                            <div>
+                                <label className={`block text-sm font-medium text-gray-700 mb-2 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                    {language === 'en' ? 'Phone (optional)' : 'फ़ोन (वैकल्पिक)'}
+                                </label>
+                                <input
+                                    type="tel"
+                                    id="contact-phone"
+                                    inputMode="tel"
+                                    aria-invalid={!!errors.phone}
+                                    aria-describedby={errors.phone ? 'error-phone' : undefined}
+                                    className={`w-full rounded-lg border px-4 py-3 focus:outline-none focus:ring-2 ${errors.phone ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-orange-500 focus:border-orange-500'}`}
+                                    placeholder={language === 'en' ? '+91-XXXXXXXXXX' : '+91-XXXXXXXXXX'}
+                                    value={form.phone}
+                                    onChange={(e) => {
+                                        setForm({ ...form, phone: e.target.value });
+                                        if (errors.phone) setErrors({ ...errors, phone: undefined });
+                                    }}
+                                />
+                                {errors.phone && (
+                                    <p id="error-phone" className={`mt-1 text-sm text-red-600 ${language === 'hi' ? 'font-hindi' : ''}`}>{errors.phone}</p>
+                                )}
+                            </div>
+
+                            <div>
+                                <label className={`block text-sm font-medium text-gray-700 mb-2 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                    {language === 'en' ? 'Topic' : 'विषय'}
+                                </label>
+                                <select
+                                    className="w-full rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 px-4 py-3"
+                                    value={form.category}
+                                    onChange={(e) => setForm({ ...form, category: e.target.value })}
+                                >
+                                    {categories.map((c) => (
+                                        <option key={c.value} value={c.value}>
+                                            {c.label[language]}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div className="md:col-span-2">
+                                <label className={`block text-sm font-medium text-gray-700 mb-2 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                    {language === 'en' ? 'Your Message' : 'आपका संदेश'}
+                                </label>
+                                <textarea
+                                    id="contact-message"
+                                    aria-invalid={!!errors.message}
+                                    aria-describedby={errors.message ? 'error-message' : undefined}
+                                    className={`w-full min-h-[140px] rounded-lg border px-4 py-3 focus:outline-none focus:ring-2 ${errors.message ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-orange-500 focus:border-orange-500'}`}
+                                    placeholder={language === 'en' ? 'Write your suggestion, agenda, or idea here...' : 'अपना सुझाव, एजेंडा या विचार यहाँ लिखें...'}
+                                    value={form.message}
+                                    onChange={(e) => {
+                                        setForm({ ...form, message: e.target.value });
+                                        if (errors.message) setErrors({ ...errors, message: undefined });
+                                    }}
+                                    required
+                                />
+                                <p className={`mt-2 text-sm text-gray-500 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                    {language === 'en'
+                                        ? 'We will send your message to our official email. No spam, no sharing.'
+                                        : 'हम आपका संदेश हमारे आधिकारिक ईमेल पर भेजेंगे। कोई स्पैम नहीं, कोई साझा नहीं।'}
+                                </p>
+                                {errors.message && (
+                                    <p id="error-message" className={`mt-1 text-sm text-red-600 ${language === 'hi' ? 'font-hindi' : ''}`}>{errors.message}</p>
+                                )}
+                            </div>
+
+                            <div className="md:col-span-2 flex items-center justify-between">
+                                <div>
+                                    {status === 'error' && (
+                                        <p className={`text-sm text-red-600 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                            {language === 'en' ? 'Submission failed. Please try again.' : 'सबमिशन विफल रहा। कृपया पुनः प्रयास करें।'}
+                                        </p>
+                                    )}
+                                    {status === 'success' && (
+                                        <p className={`text-sm text-green-600 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                            {language === 'en' ? 'Thank you! We received your suggestion.' : 'धन्यवाद! हमें आपका सुझाव मिल गया।'}
+                                        </p>
+                                    )}
+                                </div>
+                                <Button
+                                    type="submit"
+                                    disabled={status === 'sending'}
+                                    className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3"
+                                >
+                                    <span className={language === 'hi' ? 'font-hindi' : ''}>
+                                        {status === 'sending'
+                                            ? (language === 'en' ? 'Sending…' : 'भेजा जा रहा है…')
+                                            : (language === 'en' ? 'Submit Feedback' : 'सुझाव भेजें')}
+                                    </span>
+                                </Button>
+                            </div>
+                        </form>
                     </div>
                 </section>
 

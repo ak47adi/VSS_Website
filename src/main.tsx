@@ -8,3 +8,9 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>,
 )
+
+// Remove the SSR-less boot loader once app is mounted
+const bootLoader = document.getElementById('app-initial-loader')
+if (bootLoader && bootLoader.parentElement) {
+  bootLoader.parentElement.removeChild(bootLoader)
+}

@@ -3,6 +3,7 @@ import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import ScrollToTop from './components/ScrollToTop';
 import { lazy, Suspense } from 'react';
+import Loader from './components/Loader';
 
 // Route-level code-splitting to reduce mobile bundle size
 const AboutPage = lazy(() => import('./components/AboutPage'));
@@ -63,7 +64,7 @@ function AppLayout() {
         setCurrentPage={setCurrentPage}
       />
       <main className="flex-1">
-        <Suspense fallback={<div className="p-8 text-center text-gray-600">Loading…</div>}>
+  <Suspense fallback={<Loader message={language === 'en' ? 'Loading content…' : 'सामग्री लोड हो रही है…'} /> }>
           <Routes>
             <Route
               path="/"

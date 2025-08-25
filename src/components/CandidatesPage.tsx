@@ -35,6 +35,7 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                                             src={candidate.image}
                                             alt={`${candidate.name} - ${candidate.position[language]}`}
                                             className={`w-full h-full object-cover transition-transform duration-300 hover:scale-105 ${candidate.name === 'Shailendra Pathak' ? 'object-top pt-2' : 'object-center'}`}
+                                            loading="lazy" decoding="async"
                                             onError={(e) => {
                                                 const target = e.currentTarget;
                                                 target.style.display = 'none';
@@ -105,6 +106,7 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                                                         <a
                                                             href={`mailto:${candidate.email}`}
                                                             className="text-sm hover:underline break-all"
+                                                            rel="noopener noreferrer"
                                                         >
                                                             {candidate.email}
                                                         </a>
@@ -114,8 +116,9 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                                                     <div className="flex items-center text-orange-600 hover:text-orange-700 transition-colors">
                                                         <Phone className="w-4 h-4 mr-3 flex-shrink-0" />
                                                         <a
-                                                            href={`tel:+91-${candidate.phone}`}
+                                                            href={`tel:+91${candidate.phone}`}
                                                             className="text-sm hover:underline"
+                                                            rel="noopener noreferrer"
                                                         >
                                                             +91-{candidate.phone}
                                                         </a>
@@ -136,6 +139,7 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                                             src={candidate.image}
                                             alt={`${candidate.name} - ${candidate.position[language]}`}
                                             className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                                            loading="lazy" decoding="async"
                                             onError={(e) => {
                                                 const target = e.currentTarget;
                                                 target.style.display = 'none';
@@ -204,6 +208,7 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                                                     <a
                                                         href={`mailto:${candidate.email}`}
                                                         className="text-xs sm:text-xs md:text-sm hover:underline break-all"
+                                                        rel="noopener noreferrer"
                                                     >
                                                         {candidate.email}
                                                     </a>
@@ -213,8 +218,9 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                                                 <div className="flex items-center text-orange-600 hover:text-orange-700 transition-colors">
                                                     <Phone className="w-3 sm:w-3 md:w-4 h-3 sm:h-3 md:h-4 mr-2 flex-shrink-0" />
                                                     <a
-                                                        href={`tel:+91-${candidate.phone}`}
+                                                        href={`tel:+91${candidate.phone}`}
                                                         className="text-xs sm:text-xs md:text-sm hover:underline"
+                                                        rel="noopener noreferrer"
                                                     >
                                                         +91-{candidate.phone}
                                                     </a>
@@ -248,6 +254,7 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                                 src="/candidates/gallery-section-1.jpeg"
                                 alt={language === 'en' ? 'Team Gallery Image 1' : 'टीम गैलरी छवि 1'}
                                 className="w-full h-56 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                loading="lazy" decoding="async"
                                 onError={(e) => {
                                     const target = e.currentTarget;
                                     target.style.display = 'none';
@@ -275,6 +282,7 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                                 src="/candidates/gallery-section-2.jpeg"
                                 alt={language === 'en' ? 'Team Gallery Image 2' : 'टीम गैलरी छवि 2'}
                                 className="w-full h-56 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                loading="lazy" decoding="async"
                                 onError={(e) => {
                                     const target = e.currentTarget;
                                     target.style.display = 'none';

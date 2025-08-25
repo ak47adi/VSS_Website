@@ -1,14 +1,17 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
-import AboutPage from './components/AboutPage';
-import PlatformPage from './components/PlatformPage';
-import CandidatesPage from './components/CandidatesPage';
-import AssurancePage from './components/AssurancePage';
-import ContactPage from './components/ContactPage';
-import NewsPage from './components/NewsPage';
-import NewsDetailPage from './components/NewsDetailPage';
 import ScrollToTop from './components/ScrollToTop';
+import { lazy, Suspense } from 'react';
+
+// Route-level code-splitting to reduce mobile bundle size
+const AboutPage = lazy(() => import('./components/AboutPage'));
+const PlatformPage = lazy(() => import('./components/PlatformPage'));
+const CandidatesPage = lazy(() => import('./components/CandidatesPage'));
+const AssurancePage = lazy(() => import('./components/AssurancePage'));
+const ContactPage = lazy(() => import('./components/ContactPage'));
+const NewsPage = lazy(() => import('./components/NewsPage'));
+const NewsDetailPage = lazy(() => import('./components/NewsDetailPage'));
 import './App.css';
 
 import { useState, useEffect } from 'react';
@@ -60,62 +63,64 @@ function AppLayout() {
         setCurrentPage={setCurrentPage}
       />
       <main className="flex-1">
-        <Routes>
-          <Route
-            path="/"
-            element={<HomePage language={language} setCurrentPage={setCurrentPage} />}
-          />
-          <Route
-            path="/about"
-            element={<AboutPage language={language} />}
-          />
-          <Route
-            path="/platform"
-            element={<PlatformPage language={language} setCurrentPage={setCurrentPage} />}
-          />
-          <Route
-            path="/duta-elections"
-            element={<CandidatesPage language={language} />}
-          />
-          {/* Backward compatibility: redirect old slug to new */}
-          <Route
+        <Suspense fallback={<div className="p-8 text-center text-gray-600">Loading…</div>}>
+          <Routes>
+            <Route
+              path="/"
+              element={<HomePage language={language} setCurrentPage={setCurrentPage} />}
+            />
+            <Route
+              path="/about"
+              element={<AboutPage language={language} />}
+            />
+            <Route
+              path="/platform"
+              element={<PlatformPage language={language} setCurrentPage={setCurrentPage} />}
+            />
+            <Route
+              path="/duta-elections"
+              element={<CandidatesPage language={language} />}
+            />
+            {/* Backward compatibility: redirect old slug to new */}
+            {/* <Route
             path="/members"
             element={<CandidatesPage language={language} />}
-          />
-          <Route
-            path="/assurance"
-            element={<AssurancePage language={language} />}
-          />
-          <Route
-            path="/contact"
-            element={<ContactPage language={language} />}
-          />
-          <Route
-            path="/news"
-            element={<NewsPage language={language} />}
-          />
-          <Route
-            path="/news/:slug"
-            element={<NewsDetailPage language={language} />}
-          />
-          <Route
-            path="/resources"
-            element={
-              <div className="min-h-screen py-16">
-                <div className="w-full px-6 lg:px-12">
-                  <h1 className={`text-4xl font-bold text-center mb-8 ${language === 'hi' ? 'font-hindi' : ''}`}>
-                    {language === 'en' ? 'Resources' : 'संसाधन'}
-                  </h1>
-                  <p className={`text-lg text-center text-gray-600 ${language === 'hi' ? 'font-hindi' : ''}`}>
-                    {language === 'en' ? 'This page is under construction.' : 'यह पृष्ठ निर्माणाधीन है।'}
-                  </p>
+          /> */}
+            <Route
+              path="/assurance"
+              element={<AssurancePage language={language} />}
+            />
+            <Route
+              path="/contact"
+              element={<ContactPage language={language} />}
+            />
+            <Route
+              path="/news"
+              element={<NewsPage language={language} />}
+            />
+            <Route
+              path="/news/:slug"
+              element={<NewsDetailPage language={language} />}
+            />
+            <Route
+              path="/resources"
+              element={
+                <div className="min-h-screen py-16">
+                  <div className="w-full px-6 lg:px-12">
+                    <h1 className={`text-4xl font-bold text-center mb-8 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                      {language === 'en' ? 'Resources' : 'संसाधन'}
+                    </h1>
+                    <p className={`text-lg text-center text-gray-600 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                      {language === 'en' ? 'This page is under construction.' : 'यह पृष्ठ निर्माणाधीन है।'}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            }
-          />
-          {/* Redirect any unknown routes to home */}
-          <Route path="*" element={<HomePage language={language} setCurrentPage={setCurrentPage} />} />
-        </Routes>
+              }
+            />
+            {/* Redirect any unknown routes to home */}
+            <Route path="*" element={<HomePage language={language} setCurrentPage={setCurrentPage} />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer language={language} />
       <ScrollToTop />

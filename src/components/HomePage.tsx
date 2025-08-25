@@ -35,6 +35,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                         src="/banner/vss-logo.png"
                         alt="VSS Logo"
                         className="w-96 h-96 object-contain"
+                        loading="lazy" decoding="async"
                     />
                 </div>
 
@@ -146,7 +147,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
             </section>
 
             {/* About Section with Enhanced Content */}
-            <section className="py-24 bg-gray-50">
+            <section className="py-24 bg-gray-50 cv-auto">
                 <div className="w-full px-6 lg:px-12">
                     <div className="text-center mb-16">
                         <h2 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-6 ${language === 'hi' ? 'font-hindi' : ''}`}>
@@ -314,7 +315,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
             </section> */}
 
             {/* Enhanced Our Assurance Highlights */}
-            <section className="py-24 bg-gradient-to-br from-orange-50 to-amber-50">
+            <section className="py-24 bg-gradient-to-br from-orange-50 to-amber-50 cv-auto">
                 <div className="w-full px-6 lg:px-12">
                     <div className="text-center mb-16">
                         <h2 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-6 ${language === 'hi' ? 'font-hindi' : ''}`}>
@@ -389,7 +390,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
             </section>
 
             {/* Enhanced Platform Snapshot */}
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-white cv-auto">
                 <div className="w-full px-6 lg:px-12">
                     <div className="text-center mb-16">
                         <h2 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-6 ${language === 'hi' ? 'font-hindi' : ''}`}>
@@ -460,7 +461,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
             </section>
 
             {/* Meet Your President Section */}
-            <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 to-gray-100">
+            <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 to-gray-100 cv-auto">
                 <div className="w-full px-4 sm:px-6 lg:px-12">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-12 sm:mb-16">
@@ -484,6 +485,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                             src="/candidates/kamlesh-raghuvanshi.jpeg"
                                             alt="Dr. Kamlesh Kumar Raghuvanshi - DUTA Presidential Candidate"
                                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                            loading="lazy" decoding="async"
                                             onError={(e) => {
                                                 const target = e.currentTarget;
                                                 target.style.display = 'none';
@@ -588,7 +590,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
             </section>
 
             {/* Feedback Invitation Section */}
-            <section className="py-20 bg-gradient-to-r from-orange-600 to-orange-700 text-white">
+            <section className="py-20 bg-gradient-to-r from-orange-600 to-orange-700 text-white cv-auto">
                 <div className="w-full px-6 lg:px-12">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-10">

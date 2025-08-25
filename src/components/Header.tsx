@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage, currentPage, set
                             src="/banner/vss-logo-removebg.png"
                             alt="VSS Logo"
                             className="h-12 sm:h-16 lg:h-20 w-auto object-contain drop-shadow cursor-pointer transition-transform duration-200"
-                            loading="lazy"
+                            loading="eager" decoding="async"
                             onClick={() => setCurrentPage('home')}
                         />
                         {/* Hamburger Menu - only visible on mobile */}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // Removed unused icon imports
 import { websiteData } from '../data/content';
 
@@ -20,7 +21,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                                 src="/banner/vss-logo-removebg.png"
                                 alt={language === 'en' ? 'VSS Logo' : 'वीएसएस लोगो'}
                                 className="h-12 sm:h-16 lg:h-20 w-auto object-contain drop-shadow"
-                                loading="lazy"
+                                loading="lazy" decoding="async"
                             />
                             {/* <div className="pt-1">
                 <h3 className={`text-lg font-bold text-orange-400 ${language === 'hi' ? 'font-hindi' : ''}`}>
@@ -40,24 +41,24 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                         </h4>
                         <ul className="space-y-2">
                             <li>
-                                <a href="/about" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                <Link to="/about" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
                                     {websiteData.navigation.about[language]}
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="/platform" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                <Link to="/platform" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
                                     {websiteData.navigation.platform[language]}
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="/duta-elections" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                <Link to="/duta-elections" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
                                     {websiteData.navigation.candidates[language]}
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="/assurance" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                <Link to="/assurance" className={`text-gray-300 hover:text-orange-400 transition-colors ${language === 'hi' ? 'font-hindi' : ''}`}>
                                     {websiteData.navigation.assurance[language]}
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

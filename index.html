@@ -26,12 +26,16 @@
 <body>
   <div id="root">
     <!-- Initial loader for very first paint -->
-    <div id="app-initial-loader" style="position:fixed;inset:0;display:grid;place-items:center;background:#ffffff;z-index:9999">
+    <div id="app-initial-loader"
+      style="position:fixed;inset:0;display:grid;place-items:center;background:#ffffff;z-index:9999">
       <div style="display:flex;flex-direction:column;align-items:center">
         <div style="position:relative;width:80px;height:80px">
           <div style="width:80px;height:80px;border-radius:9999px;border:4px solid #fed7aa"></div>
-          <div style="position:absolute;inset:0;border-radius:9999px;border:4px solid transparent;border-top-color:#ea580c;animation:spin 1s linear infinite"></div>
-          <img src="/banner/vss-logo-removebg.png" alt="VSS" style="position:absolute;inset:0;margin:auto;width:32px;height:32px;object-fit:contain" />
+          <div
+            style="position:absolute;inset:0;border-radius:9999px;border:4px solid transparent;border-top-color:#ea580c;animation:spin 1s linear infinite">
+          </div>
+          <img src="/banner/vss-logo-removebg.png" alt="VSS"
+            style="position:absolute;inset:0;margin:auto;width:32px;height:32px;object-fit:contain" />
         </div>
         <p style="margin-top:12px;color:#374151;font-weight:500;font-size:14px">Loading…</p>
       </div>
@@ -39,7 +43,15 @@
   </div>
   <script type="module" src="/src/main.tsx"></script>
   <style>
-    @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    @keyframes spin {
+      from {
+        transform: rotate(0)
+      }
+
+      to {
+        transform: rotate(360deg)
+      }
+    }
   </style>
 </body>
 

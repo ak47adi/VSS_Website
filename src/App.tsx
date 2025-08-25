@@ -64,7 +64,7 @@ function AppLayout() {
         setCurrentPage={setCurrentPage}
       />
       <main className="flex-1">
-  <Suspense fallback={<Loader message={language === 'en' ? 'Loading content…' : 'सामग्री लोड हो रही है…'} /> }>
+        <Suspense fallback={<Loader message={language === 'en' ? 'Loading content…' : 'सामग्री लोड हो रही है…'} />}>
           <Routes>
             <Route
               path="/"

@@ -251,14 +251,19 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
                         <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                             <img
-                                src="/candidates/gallery-section-1.jpeg"
+                                src="/candidates/gallery-section-3.jpeg"
                                 alt={language === 'en' ? 'Team Gallery Image 1' : 'टीम गैलरी छवि 1'}
                                 className="w-full h-56 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-300"
                                 loading="lazy" decoding="async"
                                 onError={(e) => {
-                                    const target = e.currentTarget;
-                                    target.style.display = 'none';
-                                    const fallback = target.nextElementSibling as HTMLElement;
+                                    const img = e.currentTarget as HTMLImageElement;
+                                    if (img.src.endsWith('.jpeg')) {
+                                        img.onerror = null;
+                                        img.src = img.src.replace('.jpeg', '.jpg');
+                                        return;
+                                    }
+                                    img.style.display = 'none';
+                                    const fallback = img.nextElementSibling as HTMLElement;
                                     if (fallback) {
                                         fallback.style.display = 'flex';
                                         fallback.classList.remove('hidden');
@@ -279,14 +284,19 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
 
                         <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                             <img
-                                src="/candidates/gallery-section-2.jpeg"
+                                src="/candidates/gallery-section-4.jpeg"
                                 alt={language === 'en' ? 'Team Gallery Image 2' : 'टीम गैलरी छवि 2'}
                                 className="w-full h-56 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-300"
                                 loading="lazy" decoding="async"
                                 onError={(e) => {
-                                    const target = e.currentTarget;
-                                    target.style.display = 'none';
-                                    const fallback = target.nextElementSibling as HTMLElement;
+                                    const img = e.currentTarget as HTMLImageElement;
+                                    if (img.src.endsWith('.jpeg')) {
+                                        img.onerror = null;
+                                        img.src = img.src.replace('.jpeg', '.jpg');
+                                        return;
+                                    }
+                                    img.style.display = 'none';
+                                    const fallback = img.nextElementSibling as HTMLElement;
                                     if (fallback) {
                                         fallback.style.display = 'flex';
                                         fallback.classList.remove('hidden');
@@ -300,6 +310,72 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                                 </div>
                                 <p className="text-lg md:text-xl font-semibold text-center px-4">
                                     {language === 'en' ? 'Team Gallery' : 'टीम गैلरी'}
+                                </p>
+                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+
+                        <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                            <img
+                                src="/candidates/gallery-section-1.jpeg"
+                                alt={language === 'en' ? 'Team Gallery Image 3' : 'टीम गैलरी छवि 3'}
+                                className="w-full h-56 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                loading="lazy" decoding="async"
+                                onError={(e) => {
+                                    const img = e.currentTarget as HTMLImageElement;
+                                    if (img.src.endsWith('.jpeg')) {
+                                        img.onerror = null;
+                                        img.src = img.src.replace('.jpeg', '.jpg');
+                                        return;
+                                    }
+                                    img.style.display = 'none';
+                                    const fallback = img.nextElementSibling as HTMLElement;
+                                    if (fallback) {
+                                        fallback.style.display = 'flex';
+                                        fallback.classList.remove('hidden');
+                                    }
+                                }}
+                            />
+                            {/* Fallback placeholder */}
+                            <div className="w-full h-56 sm:h-64 md:h-80 lg:h-96 bg-gradient-to-br from-emerald-400 to-emerald-600 hidden flex-col items-center justify-center text-white">
+                                <div className="w-12 sm:w-16 md:w-20 h-12 sm:h-16 md:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-3 sm:mb-4 md:mb-6">
+                                    <User className="w-6 sm:w-8 md:w-10 h-6 sm:h-8 md:h-10" />
+                                </div>
+                                <p className="text-sm sm:text-lg md:text-xl font-semibold text-center px-4">
+                                    {language === 'en' ? 'Team Gallery' : 'टीम गैलरी'}
+                                </p>
+                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+
+                        <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                            <img
+                                src="/candidates/gallery-section-2.jpeg"
+                                alt={language === 'en' ? 'Team Gallery Image 4' : 'टीम गैलरी छवि 4'}
+                                className="w-full h-56 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                loading="lazy" decoding="async"
+                                onError={(e) => {
+                                    const img = e.currentTarget as HTMLImageElement;
+                                    if (img.src.endsWith('.jpeg')) {
+                                        img.onerror = null;
+                                        img.src = img.src.replace('.jpeg', '.jpg');
+                                        return;
+                                    }
+                                    img.style.display = 'none';
+                                    const fallback = img.nextElementSibling as HTMLElement;
+                                    if (fallback) {
+                                        fallback.style.display = 'flex';
+                                        fallback.classList.remove('hidden');
+                                    }
+                                }}
+                            />
+                            {/* Fallback placeholder */}
+                            <div className="w-full h-64 md:h-80 lg:h-96 bg-gradient-to-br from-fuchsia-400 to-fuchsia-600 hidden flex-col items-center justify-center text-white">
+                                <div className="w-16 md:w-20 h-16 md:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 md:mb-6">
+                                    <User className="w-8 md:w-10 h-8 md:h-10" />
+                                </div>
+                                <p className="text-lg md:text-xl font-semibold text-center px-4">
+                                    {language === 'en' ? 'Team Gallery' : 'टीम गैलरी'}
                                 </p>
                             </div>
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

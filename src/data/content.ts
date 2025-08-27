@@ -81,7 +81,7 @@ export const websiteData = {
         platform: { en: "Platform", hi: "नीतियाँ" },
         candidates: { en: "DUTA Elections 2025-26", hi: "DUTA चुनाव 2025-26" },
         assurance: { en: "Our Assurance", hi: "हमारे संकल्प" },
-        news: { en: "News", hi: "समाचार" },
+        news: { en: "News & Updates", hi: "समाचार और अपडेट" },
         resources: { en: "Resources", hi: "संसाधन" },
         contact: { en: "Contact", hi: "संपर्क" }
     },
@@ -307,26 +307,59 @@ export const websiteData = {
     // NEWS: Single source of truth. Add/edit items here. Each item must have a unique slug (used in /news/:slug).
     news: [
         {
-            slug: "vss-election-campaign-begins",
-            date: "2025-08-25",
+            slug: "vss-manifesto-ops-increment-2025",
+            date: "2025-08-27",
             title: {
-                en: "VSS Election Campaign Begins",
-                hi: "वीएसएस चुनाव अभियान शुरू"
+                en: "VSS releases DUTA 2025-26 manifesto: Past service count and MPhil/PhD increment",
+                hi: "VSS का घोषणापत्र: पूर्व सेवा गणना और एमफिल/पीएचडी इंक्रीमेंट बहाली"
             },
             content: {
-                en: "The Vishwavidyalaya Shikshak Samiti has officially launched its campaign for the upcoming DUTA elections.",
-                hi: "विश्वविद्यालय शिक्षक समिति ने आगामी डूटा चुनावों के लिए अपना अभियान आधिकारिक रूप से शुरू किया है।"
+                en: "VSS unveiled its DUTA 2025-26 manifesto, pledging past service count for promotions, restoration of MPhil/PhD increment, regularisation and recognition of ad‑hoc service, speedy interviews including 12 Delhi Govt colleges, abolition of NFS, expansion of hospital empanelment, and EWS expansion with matching faculty posts.",
+                hi: "VSS ने DUTA 2025-26 का घोषणापत्र जारी किया—पदोन्नति में पूर्व सेवा गणना, एमफिल/पीएचडी इंक्रीमेंट बहाली, एड-हॉक सेवा की मान्यता व नियमितीकरण, लंबित इंटरव्यू शीघ्र (12 दिल्ली सरकार के कॉलेज सहित), NFS समाप्ति, अस्पताल पैनल विस्तार और EWS के साथ समानुपाती फैकल्टी पद सृजन का वादा किया।"
             },
-            category: { en: "Election", hi: "चुनाव" }
+            category: { en: "Election", hi: "चुनाव" },
+            image: "/news/newspaper_1.jpeg",
+            imageAlt: {
+                en: "Newspaper clipping: VSS manifesto highlights past service count and MPhil/PhD increment for DUTA 2025-26",
+                hi: "समाचार कटिंग: DUTA 2025-26 के लिए VSS घोषणापत्र में पूर्व सेवा गणना और एमफिल/पीएचडी इंक्रीमेंट"
+            }
+        },
+        {
+            slug: "duta-provisional-candidate-list-2025-27",
+            date: "2025-08-26",
+            title: {
+                en: "DUTA 2025–27 provisional candidate list released by Election Officer",
+                hi: "डूटा 2025–27 के लिए चुनाव अधिकारी ने अस्थायी उम्मीदवार सूची जारी की"
+            },
+            content: {
+                en: "The Election Officer issued the provisional list for DUTA Elections 2025–2027 (dated Aug 26, 2025). Six candidates will contest for President, including Dr. Kamlesh Kr. Raghuvanshi (Ramanujan College). The Executive Committee ballot features 25 candidates from colleges across the University.",
+                hi: "चुनाव अधिकारी ने 26 अगस्त 2025 को डूटा चुनाव 2025–2027 की अस्थायी उम्मीदवार सूची जारी की। अध्यक्ष पद के लिए छह उम्मीदवार, जिनमें डॉ. कमलेश कुमार रघुवंशी (रामानुजन कॉलेज) शामिल हैं। कार्यकारिणी समिति के लिए 25 उम्मीदवार विश्वविद्यालय के विभिन्न कॉलेजों से सूचीबद्ध हैं।"
+            },
+            category: { en: "Election", hi: "चुनाव" },
+            image: "/news/members_list.jpeg",
+            imageAlt: {
+                en: "Official provisional candidate list for DUTA Elections 2025–2027 released on Aug 26, 2025",
+                hi: "26 अगस्त 2025 को जारी डूटा चुनाव 2025–2027 की आधिकारिक अस्थायी उम्मीदवार सूची"
+            },
+            highlights: [
+                {
+                    en: "Document dated August 26, 2025 and signed by the Election Officer",
+                    hi: "दस्तावेज़ दिनांक 26 अगस्त 2025, चुनाव अधिकारी द्वारा हस्ताक्षरित"
+                },
+                {
+                    en: "Six candidates for President: Kamlesh Kr. Raghuvanshi, Rajesh K Jha, Rajib Ray, Sandeep, Sanjay Mohan Marale, V. S. Negi",
+                    hi: "अध्यक्ष पद के छह उम्मीदवार: कमलेश कुमार रघुवंशी, राजेश के. झा, रजिब रे, संदीप, संजय मोहन मराले, वी. एस. नेगी"
+                },
+                {
+                    en: "25 candidates listed for the Executive Committee",
+                    hi: "कार्यकारिणी समिति के लिए 25 उम्मीदवार सूचीबद्ध"
+                },
+                {
+                    en: "VSS candidates on the EC ballot include Ashok Kumar Meena (Gargi), Luvkush Kumar (Kalindi), and Shailendra Pathak (Ramanujan)",
+                    hi: "ईसी बैलेट में VSS उम्मीदवार: अशोक कुमार मीणा (गार्गी), लवकुश कुमार (कालिंदी), शैलेन्द्र पाठक (रामानुजन)"
+                }
+            ]
         }
-        // To add more news later, uncomment examples below and edit:
-        // ,{
-        //     slug: "faculty-welfare-initiatives-announced",
-        //     date: "2025-08-05",
-        //     title: { en: "Faculty Welfare Initiatives Announced", hi: "शिक्षक कल्याण पहल की घोषणा" },
-        //     content: { en: "New proposals for improving faculty working conditions and career advancement opportunities.", hi: "शिक्षक कार्य परिस्थितियों और करियर उन्नति के अवसरों में सुधार के लिए नए प्रस्ताव।" },
-        //     category: { en: "Welfare", hi: "कल्याण" }
-        // }
     ],
     footer: {
         lastUpdated: { en: "Last Updated:", hi: "अंतिम अपडेट:" },

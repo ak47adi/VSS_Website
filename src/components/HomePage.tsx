@@ -483,7 +483,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                     <div className="aspect-[4/3] lg:aspect-[3/4] relative overflow-hidden group">
                                         <img
                                             src="/candidates/kamlesh-raghuvanshi.jpeg"
-                                            alt="Dr. Kamlesh Kumar Raghuvanshi - DUTA Presidential Candidate"
+                                            alt="Dr. Kamlesh Kumar Raghuvanshi - DUTA Presidential Candidate, VSS President"
                                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                             loading="lazy" decoding="async"
                                             onError={(e) => {
@@ -501,17 +501,41 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                             <div className="w-16 sm:w-20 h-16 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
                                                 <Users className="w-8 sm:w-10 h-8 sm:h-10" />
                                             </div>
-                                            <p className="text-lg sm:text-xl font-semibold text-center px-4">
-                                                {language === 'en' ? 'VSS President' : 'VSS अध्यक्ष'}
-                                            </p>
+                                            <div className="text-sm sm:text-lg font-semibold px-4 leading-snug text-left sm:text-center">
+                                                {language === 'en' ? (
+                                                    <>
+                                                        <span className="block sm:inline">DUTA Presidential Candidate</span>
+                                                        <span className="hidden sm:inline">, </span>
+                                                        <span className="block sm:inline">VSS President</span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <span className="block sm:inline">DUTA अध्यक्ष पद के उम्मीदवार</span>
+                                                        <span className="hidden sm:inline">, </span>
+                                                        <span className="block sm:inline">VSS अध्यक्ष</span>
+                                                    </>
+                                                )}
+                                            </div>
                                         </div>
                                         {/* Overlay */}
-                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-4 sm:p-6 lg:hidden">
-                                            <h3 className={`text-white text-lg sm:text-xl font-extrabold leading-snug drop-shadow ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-2 sm:p-4 lg:hidden">
+                                            <h3 className={`text-white text-base sm:text-xl font-extrabold leading-snug drop-shadow ${language === 'hi' ? 'font-hindi' : ''}`}>
                                                 Dr. Kamlesh Kumar Raghuvanshi
                                             </h3>
-                                            <div className={`mt-2 inline-flex items-center px-3 py-1 rounded-full bg-orange-600/90 backdrop-blur-sm shadow-lg border border-orange-300/40 text-white text-sm sm:text-base font-bold tracking-wide ${language === 'hi' ? 'font-hindi' : ''}`}>
-                                                {language === 'en' ? 'VSS President' : 'VSS अध्यक्ष'}
+                                            <div className={`mt-1 inline-flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-center px-2 py-0.5 sm:px-3 sm:py-1 rounded-full bg-orange-600/90 backdrop-blur-sm shadow-lg border border-orange-300/40 text-white text-xs sm:text-base font-bold tracking-wide whitespace-normal break-words text-left sm:text-center leading-tight max-w-[85%] mx-0 sm:mx-auto ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                                {language === 'en' ? (
+                                                    <>
+                                                        <span className="block sm:inline">DUTA Presidential Candidate</span>
+                                                        <span className="hidden sm:inline">, </span>
+                                                        <span className="block sm:inline">VSS President</span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <span className="block sm:inline">DUTA अध्यक्ष पद के उम्मीदवार</span>
+                                                        <span className="hidden sm:inline">, </span>
+                                                        <span className="block sm:inline">VSS अध्यक्ष</span>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -525,9 +549,21 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                             <h3 className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 ${language === 'hi' ? 'font-hindi' : ''}`}>
                                                 Dr. Kamlesh Kumar Raghuvanshi
                                             </h3>
-                                            <p className={`text-lg sm:text-xl text-orange-600 font-semibold ${language === 'hi' ? 'font-hindi' : ''}`}>
-                                                {language === 'en' ? 'VSS President' : 'VSS अध्यक्ष'}
-                                            </p>
+                                            <div className={`text-base sm:text-lg lg:text-xl text-orange-600 font-semibold ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                                {language === 'en' ? (
+                                                    <>
+                                                        <span className="block sm:inline">DUTA Presidential Candidate</span>
+                                                        <span className="hidden sm:inline">, </span>
+                                                        <span className="block sm:inline">VSS President</span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <span className="block sm:inline">DUTA अध्यक्ष पद के उम्मीदवार</span>
+                                                        <span className="hidden sm:inline">, </span>
+                                                        <span className="block sm:inline">VSS अध्यक्ष</span>
+                                                    </>
+                                                )}
+                                            </div>
                                         </div>
 
                                         {/* Department */}

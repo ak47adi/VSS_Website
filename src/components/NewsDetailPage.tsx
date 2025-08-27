@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { websiteData } from '../data/content';
-import { Calendar, ArrowLeft } from 'lucide-react';
+import { Calendar, ArrowLeft, X } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 
@@ -12,6 +12,13 @@ interface NewsDetailPageProps {
 const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ language }) => {
     const { slug } = useParams<{ slug: string }>();
     const item = websiteData.news.find((n: any) => n.slug === slug);
+    const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+    useEffect(() => {
+        if (!lightbox) return;
+        const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null); };
+        document.addEventListener('keydown', onKey);
+        return () => document.removeEventListener('keydown', onKey);
+    }, [lightbox]);
 
     if (!item) {
         return (
@@ -70,11 +77,59 @@ const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ language }) => {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
+                        {(item as any).image && (
+                            <div className="mb-4">
+                                <div className="relative group rounded-lg overflow-hidden bg-gray-100">
+                                    <img
+                                        src={(item as any).image}
+                                        alt={((item as any).imageAlt?.[language]) || item.title[language]}
+                                        className="w-full h-auto cursor-zoom-in transition-transform duration-300 group-hover:scale-[1.02]"
+                                        loading="lazy" decoding="async"
+                                        onClick={() => setLightbox({ src: (item as any).image, alt: ((item as any).imageAlt?.[language]) || item.title[language] })}
+                                    />
+                                </div>
+                                <p className="text-xs text-gray-500 mt-1">{language === 'en' ? 'Tap image to view larger' : 'बड़ी छवि देखने के लिए छवि पर टैप करें'}</p>
+                            </div>
+                        )}
                         <div className={`prose max-w-none ${language === 'hi' ? 'font-hindi' : ''}`}>
                             <p className="text-gray-800 text-lg leading-relaxed">{item.content[language]}</p>
                         </div>
+                        {(item as any).highlights && Array.isArray((item as any).highlights) && (
+                            <div className="mt-6">
+                                <h3 className={`text-lg font-semibold mb-2 ${language === 'hi' ? 'font-hindi' : ''}`}>
+                                    {language === 'en' ? 'Key highlights' : 'मुख्य बिंदु'}
+                                </h3>
+                                <ul className="list-disc pl-6 space-y-1 text-gray-800">
+                                    {(item as any).highlights.map((h: any, idx: number) => (
+                                        <li key={idx} className={language === 'hi' ? 'font-hindi' : ''}>{h[language]}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                     </CardContent>
                 </Card>
+                {lightbox && (
+                    <div
+                        role="dialog" aria-modal="true"
+                        className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-6"
+                        onClick={() => setLightbox(null)}
+                    >
+                        <div className="relative max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
+                            <button
+                                aria-label={language === 'en' ? 'Close' : 'बंद करें'}
+                                className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 inline-flex items-center justify-center rounded-full bg-black/70 text-white hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white/60 p-2"
+                                onClick={() => setLightbox(null)}
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                            <img
+                                src={lightbox.src}
+                                alt={lightbox.alt}
+                                className="max-h-[90vh] max-w-[95vw] w-auto h-auto object-contain rounded-lg shadow-2xl"
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -35,12 +35,12 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage, currentPage, set
             <div className="bg-[#0d4864] text-white">
                 <div className="w-full flex flex-col items-center sm:flex-row sm:items-stretch">
                     {/* Logo and Hamburger Row for Mobile */}
-                    <div className="flex items-center justify-between w-full sm:w-auto px-4 lg:px-6 py-2 lg:py-3">
+                    <div className="flex items-center justify-between w-full sm:w-auto px-3 sm:px-4 lg:px-6 py-2 lg:py-3">
                         {/* Logo - left-aligned on mobile, centered on larger screens via parent */}
                         <img
                             src="/banner/vss-logo-removebg.png"
                             alt="VSS Logo"
-                            className="h-12 sm:h-16 lg:h-20 w-auto object-contain drop-shadow cursor-pointer transition-transform duration-200"
+                            className="h-10 sm:h-14 md:h-16 lg:h-20 xl:h-24 w-auto object-contain drop-shadow cursor-pointer transition-transform duration-200 max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[280px] xl:max-w-[420px]"
                             loading="eager" decoding="async"
                             onClick={() => setCurrentPage('home')}
                         />
@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage, currentPage, set
                     </div>
 
                     {/* Language toggle - centered on mobile when menu closed, right-aligned on sm+ */}
-                    <div className={`${isMobileMenuOpen ? 'hidden' : 'flex'} sm:flex items-center justify-center sm:justify-end px-6 lg:px-10 py-2 lg:py-4 bg-[#0d4864] w-full sm:flex-1 sm:min-h-[64px]`}>
+                    <div className={`${isMobileMenuOpen ? 'hidden' : 'flex'} sm:flex items-center justify-center sm:justify-end px-3 sm:px-6 lg:px-10 py-2 lg:py-4 bg-[#0d4864] w-full sm:flex-1 sm:min-h-[64px]`}>
                         <div className="flex items-center space-x-2">
                             <Globe className="w-5 h-5" />
                             <Button

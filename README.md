@@ -1,6 +1,6 @@
-# VSS Website - Vishwavidyalaya Shikshak Samiti
+# VSS Website - Vishwavidyalaya Shikshak Sangh
 
-A fully responsive, bilingual (English/Hindi) website for VSS (Vishwavidyalaya Shikshak Samiti), a teachers' panel contesting DUTA elections. Built with React, TypeScript, Tailwind CSS, and modern web standards.
+A fully responsive, bilingual (English/Hindi) website for VSS (Vishwavidyalaya Shikshak Sangh), a teachers' panel contesting DUTA elections. Built with React, TypeScript, Tailwind CSS, and modern web standards.
 
 ## 🌟 Features
 
@@ -50,7 +50,7 @@ The built files will be in the `dist` directory, ready for deployment.
 
 ---
 
-**Built with ❤️ for VSS - Vishwavidyalaya Shikshak Samiti**
+**Built with ❤️ for VSS - Vishwavidyalaya Shikshak Sangh**
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

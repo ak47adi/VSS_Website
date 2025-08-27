@@ -35,7 +35,7 @@ const PlatformPage: React.FC<PlatformPageProps> = ({ language, setCurrentPage })
                 },
                 {
                     en: "Legal intervention for faculty grievances - Not just committee formations",
-                    hi: "शिक्षक शिकायतों के लिए कानूनी हस्तक्षेप - केवल समिति गठन नहीं"
+                    hi: "शिक्षक शिकायतों के लिए कानूनी हस्तक्षेप - केवल संघ गठन नहीं"
                 },
                 {
                     en: "Comprehensive medical coverage including family members and retired faculty",

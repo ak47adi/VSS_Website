@@ -67,8 +67,8 @@ export const bannerSlides = [
 export const websiteData = {
     header: {
         title: {
-            en: "Vishwavidyalaya Shikshak Samiti (VSS)",
-            hi: "विश्वविद्यालय शिक्षक समिति (वीएसएस)"
+            en: "Vishwavidyalaya Shikshak Sangh (VSS)",
+            hi: "विश्वविद्यालय शिक्षक संघ (वीएसएस)"
         },
         subtitle: {
             en: "A committed team, a clear vision - transforming academic excellence together.",
@@ -333,7 +333,7 @@ export const websiteData = {
             },
             content: {
                 en: "The Election Officer issued the provisional list for DUTA Elections 2025–2027 (dated Aug 26, 2025). Six candidates will contest for President, including Dr. Kamlesh Kr. Raghuvanshi (Ramanujan College). The Executive Committee ballot features 25 candidates from colleges across the University.",
-                hi: "चुनाव अधिकारी ने 26 अगस्त 2025 को डूटा चुनाव 2025–2027 की अस्थायी उम्मीदवार सूची जारी की। अध्यक्ष पद के लिए छह उम्मीदवार, जिनमें डॉ. कमलेश कुमार रघुवंशी (रामानुजन कॉलेज) शामिल हैं। कार्यकारिणी समिति के लिए 25 उम्मीदवार विश्वविद्यालय के विभिन्न कॉलेजों से सूचीबद्ध हैं।"
+                hi: "चुनाव अधिकारी ने 26 अगस्त 2025 को डूटा चुनाव 2025–2027 की अस्थायी उम्मीदवार सूची जारी की। अध्यक्ष पद के लिए छह उम्मीदवार, जिनमें डॉ. कमलेश कुमार रघुवंशी (रामानुजन कॉलेज) शामिल हैं। कार्यकारिणी संघ के लिए 25 उम्मीदवार विश्वविद्यालय के विभिन्न कॉलेजों से सूचीबद्ध हैं।"
             },
             category: { en: "Election", hi: "चुनाव" },
             image: "/news/members_list.jpeg",
@@ -352,7 +352,7 @@ export const websiteData = {
                 },
                 {
                     en: "25 candidates listed for the Executive Committee",
-                    hi: "कार्यकारिणी समिति के लिए 25 उम्मीदवार सूचीबद्ध"
+                    hi: "कार्यकारिणी संघ के लिए 25 उम्मीदवार सूचीबद्ध"
                 },
                 {
                     en: "VSS candidates on the EC ballot include Ashok Kumar Meena (Gargi), Luvkush Kumar (Kalindi), and Shailendra Pathak (Ramanujan)",
@@ -363,7 +363,7 @@ export const websiteData = {
     ],
     footer: {
         lastUpdated: { en: "Last Updated:", hi: "अंतिम अपडेट:" },
-        ownership: { en: "© 2025 Vishwavidyalaya Shikshak Samiti", hi: "© 2025 विश्वविद्यालय शिक्षक समिति" },
+        ownership: { en: "© 2025 Vishwavidyalaya Shikshak Sangh", hi: "© 2025 विश्वविद्यालय शिक्षक संघ" },
         slogan: { en: "Education for All, Excellence for Nation", hi: "सभी के लिए शिक्षा, राष्ट्र के लिए उत्कृष्टता" }
     }
 };

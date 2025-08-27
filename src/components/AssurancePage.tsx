@@ -173,7 +173,7 @@ const AssurancePage: React.FC<AssurancePageProps> = ({ language }) => {
                         </p>
                         <div className="text-lg font-medium">
                             <p className={language === 'hi' ? 'font-hindi' : ''}>
-                                {language === 'en' ? 'Vishwavidyalaya Shikshak Samiti (VSS)' : 'विश्वविद्यालय शिक्षक समिति (VSS)'}
+                                {language === 'en' ? 'Vishwavidyalaya Shikshak Sangh (VSS)' : 'विश्वविद्यालय शिक्षक संघ (VSS)'}
                             </p>
                             <p className={`mt-2 opacity-90 ${language === 'hi' ? 'font-hindi' : ''}`}>
                                 {language === 'en' ? 'DUTA Election 2025–2027' : 'DUTA चुनाव 2025–2027'}

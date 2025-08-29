@@ -483,7 +483,7 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                     <div className="aspect-[4/3] lg:aspect-[3/4] relative overflow-hidden group">
                                         <img
                                             src="/candidates/kamlesh-raghuvanshi.jpeg"
-                                            alt="Dr. Kamlesh Kumar Raghuvanshi - DUTA Presidential Candidate, VSS President"
+                                            alt="Dr. Kamlesh Kumar Raghuvanshi - DUTA Presidential Candidate"
                                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                             loading="lazy" decoding="async"
                                             onError={(e) => {
@@ -505,14 +505,13 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                                 {language === 'en' ? (
                                                     <>
                                                         <span className="block sm:inline">DUTA Presidential Candidate</span>
-                                                        <span className="hidden sm:inline">, </span>
-                                                        <span className="block sm:inline">VSS President</span>
+                                                        
+                                                        
                                                     </>
                                                 ) : (
                                                     <>
                                                         <span className="block sm:inline">DUTA अध्यक्ष पद के उम्मीदवार</span>
-                                                        <span className="hidden sm:inline">, </span>
-                                                        <span className="block sm:inline">VSS अध्यक्ष</span>
+                                                        
                                                     </>
                                                 )}
                                             </div>
@@ -526,14 +525,12 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                                 {language === 'en' ? (
                                                     <>
                                                         <span className="block sm:inline">DUTA Presidential Candidate</span>
-                                                        <span className="hidden sm:inline">, </span>
-                                                        <span className="block sm:inline">VSS President</span>
+                                                        
                                                     </>
                                                 ) : (
                                                     <>
                                                         <span className="block sm:inline">DUTA अध्यक्ष पद के उम्मीदवार</span>
-                                                        <span className="hidden sm:inline">, </span>
-                                                        <span className="block sm:inline">VSS अध्यक्ष</span>
+                                                        
                                                     </>
                                                 )}
                                             </div>
@@ -553,14 +550,12 @@ const HomePage: React.FC<HomePageProps> = ({ language, setCurrentPage }) => {
                                                 {language === 'en' ? (
                                                     <>
                                                         <span className="block sm:inline">DUTA Presidential Candidate</span>
-                                                        <span className="hidden sm:inline">, </span>
-                                                        <span className="block sm:inline">VSS President</span>
+                                                        
                                                     </>
                                                 ) : (
                                                     <>
                                                         <span className="block sm:inline">DUTA अध्यक्ष पद के उम्मीदवार</span>
-                                                        <span className="hidden sm:inline">, </span>
-                                                        <span className="block sm:inline">VSS अध्यक्ष</span>
+                                                        
                                                     </>
                                                 )}
                                             </div>

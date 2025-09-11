@@ -412,7 +412,7 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                 </div>
 
                 {/* Cast Your Valuable Vote Section */}
-                <div className="mt-16">
+                {/* <div className="mt-16">
                     <Card className="bg-gradient-to-r from-blue-600 to-blue-700 text-white border-0">
                         <CardContent className="p-8 text-center">
                             <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${language === 'hi' ? 'font-hindi' : ''}`}>
@@ -447,7 +447,7 @@ const CandidatesPage: React.FC<CandidatesPageProps> = ({ language }) => {
                             </div>
                         </CardContent>
                     </Card>
-                </div>
+                </div> */}
 
                 {/* Call to Action */}
                 <div className="mt-16 text-center">

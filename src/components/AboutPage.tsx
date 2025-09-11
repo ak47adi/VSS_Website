@@ -294,8 +294,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ language }) => {
                             <div className={`bg-white p-6 rounded-lg border-l-4 border-l-orange-600 ${language === 'hi' ? 'font-hindi' : ''}`}>
                                 <p className="text-gray-800 font-semibold text-lg leading-relaxed">
                                     {language === 'en'
-                                        ? 'VSS – National Democratic Teachers\' Front is neither created just for opposition, nor just for elections. It is a serious reformist movement — for teachers, for education, and for the nation.'
-                                        : 'VSS– राष्ट्रीय डेमोक्रेटिक टीचर्स फ्रंट न तो केवल विरोध के लिए बना है, न ही केवल चुनाव के लिए। यह एक गंभीर सुधारवादी आंदोलन है — शिक्षकों के लिए, शिक्षा के लिए और राष्ट्र के लिए।'
+                                        ? 'VSS – Vishwavidyalaya Shikshak Sangh is neither created just for opposition, nor just for elections. It is a serious reformist movement — for teachers, for education, and for the nation.'
+                                        : 'VSS– विश्वविद्यालय शिक्षक संघ न तो केवल विरोध के लिए बना है, न ही केवल चुनाव के लिए। यह एक गंभीर सुधारवादी आंदोलन है — शिक्षकों के लिए, शिक्षा के लिए और राष्ट्र के लिए।'
                                     }
                                 </p>
                             </div>

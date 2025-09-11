@@ -333,8 +333,8 @@ const PlatformPage: React.FC<PlatformPageProps> = ({ language, setCurrentPage })
                             <div className={`mt-8 text-center p-4 bg-white/10 rounded-lg ${language === 'hi' ? 'font-hindi' : ''}`}>
                                 <p className="text-lg font-medium">
                                     {language === 'en'
-                                        ? 'VSS - National Democratic Teachers\' Front: Neither created for opposition nor just for elections. A serious reformist movement.'
-                                        : 'VSS - राष्ट्रीय डेमोक्रेटिक टीचर्स फ्रंट: न तो विरोध के लिए बना है, न ही केवल चुनाव के लिए। एक गंभीर सुधारवादी आंदोलन।'
+                                        ? 'VSS - Vishwavidyalaya Shikshak Sangh: Neither created for opposition nor just for elections. A serious reformist movement.'
+                                        : 'VSS - विश्वविद्यालय शिक्षक संघ: न तो विरोध के लिए बना है, न ही केवल चुनाव के लिए। एक गंभीर सुधारवादी आंदोलन।'
                                     }
                                 </p>
                             </div>
@@ -404,7 +404,7 @@ const PlatformPage: React.FC<PlatformPageProps> = ({ language, setCurrentPage })
                 </div>
 
                 {/* Cast Your Valuable Vote Section */}
-                <div className="mt-20 mb-20 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12 px-8 rounded-lg">
+                {/* <div className="mt-20 mb-20 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12 px-8 rounded-lg">
                     <div className="text-center">
                         <h3 className={`text-3xl font-bold mb-6 ${language === 'hi' ? 'font-hindi' : ''}`}>
                             {language === 'en' ? 'Cast Your Valuable Vote' : 'अपना बहुमूल्य मत डालें'}
@@ -442,7 +442,7 @@ const PlatformPage: React.FC<PlatformPageProps> = ({ language, setCurrentPage })
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Call to Action */}
                 <div className="mt-16 mb-20 text-center bg-gradient-to-r from-orange-600 to-orange-700 text-white py-12 px-8 rounded-lg">

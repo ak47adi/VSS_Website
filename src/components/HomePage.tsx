@@ -1,4 +1,4 @@
-import { Calendar, Users, Target, ArrowRight, CheckCircle, Clock, MapPin, Vote, Shield } from 'lucide-react';
+import {  Users, Target, ArrowRight, CheckCircle, Shield } from 'lucide-react';
 import { websiteData } from '../data/content';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';

@@ -25,6 +25,7 @@ function AppLayout() {
     const savedLanguage = localStorage.getItem('vss-website-language');
     return (savedLanguage as 'en' | 'hi') || 'hi';
   });
+  const [isNavigating, setIsNavigating] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -33,9 +34,15 @@ function AppLayout() {
     localStorage.setItem('vss-website-language', language);
   }, [language]);
 
-  // Scroll to top whenever the route changes
+  // Scroll to top whenever the route changes and hide loader
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Hide loader after a brief delay to ensure smooth transition
+    const timer = setTimeout(() => {
+      setIsNavigating(false);
+    }, 300); // 300ms delay for smooth transition
+    
+    return () => clearTimeout(timer);
   }, [location.pathname]);
 
   // Get current page from URL path
@@ -46,6 +53,9 @@ function AppLayout() {
   };
 
   const setCurrentPage = (page: string) => {
+    // Show loader immediately when navigation starts
+    setIsNavigating(true);
+    
     if (page === 'home') {
       navigate('/');
     } else {
@@ -64,6 +74,9 @@ function AppLayout() {
         setCurrentPage={setCurrentPage}
       />
       <main className="flex-1">
+        {isNavigating && (
+          <Loader message={language === 'en' ? 'Loading page…' : 'पृष्ठ लोड हो रहा है…'} />
+        )}
         <Suspense fallback={<Loader message={language === 'en' ? 'Loading content…' : 'सामग्री लोड हो रही है…'} />}>
           <Routes>
             <Route
